@@ -24,7 +24,7 @@ function ManagerView({ user }: { user: UserType }) {
 	return (
 		<div className="flex flex-col space-y-4">
 			<header>
-			<h2 className="font-semibold text-xl">
+			<h2 className="font-semibold text-xl mb-4">
 				{labels.header1}
 				{user.first_name}, {labels.header2}
 			</h2>

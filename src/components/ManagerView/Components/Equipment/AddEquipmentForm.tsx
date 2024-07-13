@@ -15,8 +15,11 @@ import { z } from 'zod'
 import { addEquipmentSchema } from '../../../../../ZodSchema/addEquipmentSchema'
 import { addEquipmentService } from "../../../../../Services/AddEquipment"
 import { toast } from "@/components/ui/use-toast"
+import { useDispatch } from "react-redux"
+import { addEquipmentToStore } from "@/lib/features/equipmentSlice"
 
 function AddEquipmentForm() {
+  const dispatch = useDispatch()
     const form = useForm<z.infer<typeof addEquipmentSchema>>({
         resolver: zodResolver(addEquipmentSchema),
       })
@@ -30,6 +33,7 @@ function AddEquipmentForm() {
             })
           }
           else{
+            dispatch(addEquipmentToStore(res))
             toast({
               title: `${res.label}, הוסף בהצלחה`
             })

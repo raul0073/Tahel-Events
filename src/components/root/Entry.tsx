@@ -69,7 +69,7 @@ function Entry() {
 		<section className="entry w-full flex flex-col items-center justify-center">
 			<Card className="w-full">
 				<CardHeader className="text-center">
-					<CardTitle className="text-4xl font-extrabold  text-violet-600">
+					<CardTitle className="text-4xl font-extrabold  text-[#C3ACD0]">
 						{labels.header}
 					</CardTitle>
 					<CardDescription>
@@ -84,11 +84,13 @@ function Entry() {
 				)}
 				<CardFooter className="flex flex-col space-y-4">
 					<CardDescription>
-						<Button variant={'default'} onClick={() => setForgotPass(!forgotPass)}>
-							{labels.forgotPass}
+						<Button variant={'link'} className=" text-[#C3ACD0]" onClick={() => setForgotPass(!forgotPass)}>
+							{!forgotPass ? (
+								<span>שכחתי סיסמה</span>
+							) : (<span>חזרה </span>)}
 						</Button>
 					</CardDescription>
-					{forgotPass && (<Button  variant={'secondary'}  onClick={()=> setForgotPass(false)}>חזרה</Button>)}
+					
 				</CardFooter>
 			</Card>
 		</section>

@@ -23,11 +23,11 @@ export const eventsSlice = createSlice({
             state[month] = [];
           }
           const existingEventIndex = state[month].findIndex(e => e._id === event._id);
-          if (existingEventIndex === -1) {
-            state[month].push(event);
+          if (existingEventIndex !== -1 && event.isAssigned) {
+            state[month][existingEventIndex] = event; // Replace existing event
+          } else if (existingEventIndex === -1) {
+            state[month].push(event); // Add new event
           }
-          
-          
         },
         removeEventStore: (state, action: PayloadAction<{ month: number; id: string }>) => {
             const { month, id } = action.payload;

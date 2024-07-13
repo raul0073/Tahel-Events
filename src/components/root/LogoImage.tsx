@@ -5,8 +5,8 @@ function LogoImage() {
   return (
     <Image
     src={tahellogo}
-    width={120}
-    height={120}
+    width={80}
+    height={80}
     className="rounded-full"
     alt="logo"
 />

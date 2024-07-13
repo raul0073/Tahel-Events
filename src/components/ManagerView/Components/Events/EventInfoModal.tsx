@@ -68,12 +68,13 @@ function EventInfoModal({ event }: { event: EventType }) {
 					</p>
 				);
 			})}
-			<DialogFooter className="py-4">
-				{clicked ? (
-					<CheckIcon className="w-20 h-20 mx-auto" color={"green"} />
-				) : (
+				<Separator />
+			<DialogFooter className="py-4 w-full flex justify-center items-center">
+				{!event.isAssigned ? (
 					<Button onClick={() => handleClick()}>השתבץ לאירוע</Button>
-				)}
+				): (<>
+					<CheckIcon color={'green'} /> <h3>עובד: {event.employee}</h3>
+				</>)}
 			</DialogFooter>
 		</DialogContent>
 	);

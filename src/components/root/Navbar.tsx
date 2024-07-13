@@ -14,8 +14,8 @@ function Navbar() {
     router.replace("/")
   }
   return (
-    <div className='w-full h-[10vh] bg-primary'>
-      <div className='p-4 flex justify-between w-full items-center'>
+    <div className='w-full h-[7vh] bg-primary'>
+      <div className='p-2 flex justify-between w-full items-center'>
         <LogoImage />
         {/* when in main, show logout btn */}
         {path.includes('main') && (<Button variant={'ghost'} onClick={logout}>  התנתק <ExitIcon className="rotate-180 mx-1"/></Button> )}

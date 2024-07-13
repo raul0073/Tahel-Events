@@ -7,7 +7,7 @@ import {
   CardDescription
 } from "../ui/card";
 import { Input } from "../ui/input";
-import { Fragment, SetStateAction } from 'react';
+import { Fragment } from 'react';
 function ForgotPasswordComp( ) {
   return (
     <Fragment>
@@ -15,8 +15,8 @@ function ForgotPasswordComp( ) {
     <CardContent className="space-y-2">
     <Input type="text" placeholder="כתובת מייל" />
     <CardDescription>{labels.forgotText}</CardDescription>
-      
-</CardContent>
+    <Button className="w-full" >שלח</Button>
+  </CardContent>
 
     </Fragment>
   )

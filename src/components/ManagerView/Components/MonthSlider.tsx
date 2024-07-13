@@ -41,7 +41,8 @@ function MonthSlider({
 	];
 
 	return (
-		<section className="w-full flex justify-center items-center">
+		<section className="w-full flex flex-col justify-center items-center">
+			<div className="w-full flex justify-center items-center">
 			<ArrowRightIcon
 			className="mx-1 text-xl font-extrabold cursor-pointer w-10 h-8 text-gray-400 hover:text-gray-300"
 				onClick={goToPreviousMonth}>
@@ -55,6 +56,8 @@ function MonthSlider({
 				onClick={goToNextMonth}>
 				
 			</ArrowLeftIcon>
+			</div>
+			<small>{monthNames[selectedMonth - 1]}</small>
 		</section>
 	);
 }

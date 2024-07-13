@@ -24,8 +24,12 @@ export async function POST(req: NextRequest, res:NextResponse) {
         }
         await connectMongoDB();
         const newEvent = new Event(data)        
-        newEvent.save()
-        return NextResponse.json(newEvent, { status: 200 });
+        await newEvent.save()
+
+
+        const savedEvent = await Event.findById(newEvent._id);
+        console.log(savedEvent)
+        return NextResponse.json(savedEvent, { status: 201  });
     } catch (err) {
         return NextResponse.json(err, { status: 500 });
     }

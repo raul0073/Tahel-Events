@@ -7,6 +7,7 @@ import labels from "./../../../Labels/ManagerView.json"
 import MonthSlider from '../ManagerView/Components/MonthSlider'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { UserType } from '@/lib/DB/Models/Employee'
+import EventsCards from '../EventsCards'
 
 
 function EmployeeView({user} : {user: UserType}) {
@@ -39,7 +40,9 @@ function EmployeeView({user} : {user: UserType}) {
 				<TabsContent value="table">
 					<EventsTable selectedMonth={selectedMonth}/>
 				</TabsContent>
-				<TabsContent value="cards">Change your password here.</TabsContent>
+				<TabsContent value="cards">
+					<EventsCards selectedMonth={selectedMonth} user={user}/>
+				</TabsContent>
 			</Tabs>
 			<Separator />
 		</div>

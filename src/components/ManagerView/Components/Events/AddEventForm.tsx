@@ -9,17 +9,17 @@ import {
   FormMessage
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { toast } from "@/components/ui/use-toast"
+import { addEventStore } from "@/lib/features/eventsSlice"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { EraserIcon } from "@radix-ui/react-icons"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
+import { useDispatch } from "react-redux"
 import { z } from "zod"
+import { addEventService } from "../../../../../Services/addEventService"
 import { addEventSchema } from '../../../../../ZodSchema/addEventSchema'
 import SelectEquipment from "../Equipment/SelectEquipment"
-import { EraserIcon } from "@radix-ui/react-icons"
-import { addEventService } from "../../../../../Services/addEventService"
-import { toast } from "@/components/ui/use-toast"
-import { useDispatch } from "react-redux"
-import { addEventStore } from "@/lib/features/eventsSlice"
 
 function AddEventForm() {
   const [selected, setSelected] = useState<string[]>([]);
@@ -47,12 +47,13 @@ function AddEventForm() {
             toast({
               title: `אירוע הוסף בהצלחה`
             })
+            return form.reset()
           }
           
           
         } catch (error) {
           console.log(error)
-        } 
+        }
       }
 
       const onEquipmentChange = (selectedOption: string) => {

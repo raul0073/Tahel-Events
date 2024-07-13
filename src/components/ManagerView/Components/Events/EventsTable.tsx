@@ -30,9 +30,12 @@ import EventInfoModal from "./EventInfoModal";
 function EventsTable({ selectedMonth }: { selectedMonth: number }) {
 	const [showEvent, setShowEvent] = useState<boolean>(false);
 	const events = useSelector((state: RootState) => state.events[selectedMonth]);
+	
 	if (!events) {
 		return <EventsTableSkeleton />;
 	}
+	
+	const sortedEvents = [...events].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 	return (
 		<Fragment>
 			<Table>
@@ -45,8 +48,9 @@ function EventsTable({ selectedMonth }: { selectedMonth: number }) {
 						<TableHead className="text-center">{"עובד"}</TableHead>
 					</TableRow>
 				</TableHeader>
-				<TableBody>
-					{events.map((event: EventType) => {
+				<TableBody className="rounded-lg">
+					{events.length > 0 && 
+					sortedEvents.map((event: EventType) => {
 						return (
 							<Fragment key={event._id}>
 								<Dialog>
@@ -54,7 +58,7 @@ function EventsTable({ selectedMonth }: { selectedMonth: number }) {
 										<TableRow
 											key={event._id}
 											onClick={() => setShowEvent(!showEvent)}
-											className="hover:cursor-pointer">
+											className={`rounded-xl hover:cursor-pointer  ${event.isAssigned? 'assigned' : ''}`}>
 											<TableCell className="">
 												{new Date(event.date).toLocaleDateString("il")}
 											</TableCell>
