@@ -23,7 +23,7 @@ import ForgotPasswordComp from "./ForgotPasswordComp";
 import LoginForm from "./LoginForm";
 import { addEmployeeToStore } from "@/lib/features/employeeSlice";
 import { Button } from "../ui/button";
-
+import LogoImage from './LogoImage'
 
 function Entry() {
 	// states
@@ -66,8 +66,8 @@ function Entry() {
 		setLoading(false);
 	}
 	return (
-		<section className="entry w-full flex flex-col items-center justify-center">
-			<Card className="w-full">
+		<section className="entry w-full flex flex-col items-center justify-center lg:w-2/3">
+			<Card className="w-full md:w-1/2">
 				<CardHeader className="text-center">
 					<CardTitle className="text-4xl font-extrabold  text-[#C3ACD0]">
 						{labels.header}

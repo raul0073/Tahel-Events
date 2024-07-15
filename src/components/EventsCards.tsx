@@ -11,6 +11,7 @@ import { Separator } from './ui/separator';
 import { toast } from './ui/use-toast';
 import { UserType } from '@/lib/DB/Models/Employee';
 import { addEventStore } from '@/lib/features/eventsSlice';
+import { Label } from './ui/label';
 
 function EventsCards({selectedMonth, user}: {selectedMonth: number, user: UserType}) {
     const events = useSelector((state: RootState) => state.events[selectedMonth]);
@@ -40,34 +41,42 @@ function EventsCards({selectedMonth, user}: {selectedMonth: number, user: UserTy
 		}
 	};
   return (
-    <section className="card space-y-4">
+    <section className="card pb-[10vh] space-y-4 md:grid md:grid-cols-2 md:space-y-0 md:gap-2">
          {
         sortedEvents.map((event: EventType) => {
             return (
                 <Card key={event._id} className='p-1'>
-                    <CardHeader className="bg-[#C3ACD0] rounded-t-lg">
+                    <CardHeader className="bg-[#F7EFE5] rounded-t-lg py-4 mb-4">
                         <CardTitle className="text-center">
                             {event.location} <br/> 
                             {new Date(event.date).toLocaleDateString('he')}
                         </CardTitle>
                     </CardHeader>
-                    <Separator />
+
 
                     <CardContent>
-                        <p>שעת התחלה: {event.start}:00</p>
-                        <p>שעת סיום: {event.end}:00</p>
-                        <p>מתנפחים:</p>
+                        <div className="w-full flex justify-between items-center">
+                        <Label>שעת התחלה</Label>
+                        <p>{event.start}:00</p>
+                        </div>
+                        <div className="w-full flex justify-between items-center">
+                        <Label>שעת סיום</Label>
+                        <p>{event.end}:00</p>
+                        </div>
+                        <div className="w-full">
+                        <Label>מתנפחים </Label>
                         <ul>
                         {event.equipment.map((item: string, index: number) => {
-                            return <li key={index}>{item}</li> 
+                            return <p className="text-xs" key={index}>{item}</p> 
                         })}
                         </ul>
+                        </div>
                     </CardContent>
                     <CardFooter>
                     {!event.isAssigned ? (
 					<Button onClick={() => handleClick(event)}>השתבץ לאירוע</Button>
 				): (<>
-					<CheckIcon color={'green'} /> <h3>עובד: {event.employee}</h3>
+					<CheckIcon color={'green'} height={30} width={30}/> <h3>עובד: {event.employee}</h3>
 				</>)}
                     </CardFooter>
                 </Card>

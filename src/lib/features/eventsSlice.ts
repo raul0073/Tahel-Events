@@ -7,7 +7,6 @@ export interface EventsSlice {
     events: EventsStateType;
 }
 
-
 // init
 const initialState: EventsStateType = {} as EventsStateType;
 
@@ -24,9 +23,9 @@ export const eventsSlice = createSlice({
           }
           const existingEventIndex = state[month].findIndex(e => e._id === event._id);
           if (existingEventIndex !== -1 && event.isAssigned) {
-            state[month][existingEventIndex] = event; // Replace existing event
+            state[month][existingEventIndex] = event; 
           } else if (existingEventIndex === -1) {
-            state[month].push(event); // Add new event
+            state[month].push(event); 
           }
         },
         removeEventStore: (state, action: PayloadAction<{ month: number; id: string }>) => {
@@ -35,8 +34,17 @@ export const eventsSlice = createSlice({
               state[month] = state[month].filter(event => event._id !== id);
             }
           },
+          updateEventStore: (state, action: PayloadAction<EventType>) => {
+            const event = action.payload;
+            const month = new Date(event.date).getMonth() + 1;
+            const existingEventIndex = state[month].findIndex(e => e._id === event._id);
+
+            if (existingEventIndex !== -1) {
+                state[month][existingEventIndex] = event; 
+            }
+          }
       },
     });
     
-    export const { addEventStore, removeEventStore } = eventsSlice.actions;
+    export const { addEventStore, removeEventStore, updateEventStore } = eventsSlice.actions;
     export default eventsSlice.reducer;

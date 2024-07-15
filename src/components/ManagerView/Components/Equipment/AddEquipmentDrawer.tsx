@@ -10,19 +10,19 @@ import {
     DrawerTrigger,
   } from "@/components/ui/drawer"
 import { Button } from '@/components/ui/button'
-import { PlusIcon } from '@radix-ui/react-icons'
+import { PlusCircledIcon } from '@radix-ui/react-icons'
 import AddEquipmentForm from './AddEquipmentForm'
 
 
-function AddEquipmentDrawer({text} : {text: string}) {
+function AddEquipmentDrawer() {
   return (
     <Drawer>
-  <DrawerTrigger className='border rounded-lg bg-gray-500 flex items-center justify-center p-4 text-white'>
-     <PlusIcon className='mx-1'/>  {text} 
+  <DrawerTrigger className='fixed bottom-[7vh] right-5 z-10 bg-primary h-10 w-10 rounded-full hover:scale-105'>
+    <PlusCircledIcon color='white' className="w-full h-full rounded-full"/>
   </DrawerTrigger>
   <DrawerContent>
     <DrawerHeader>
-      <DrawerTitle>{text}</DrawerTitle>
+      <DrawerTitle>{'הוסף ציוד חדש'}</DrawerTitle>
       <DrawerDescription>{`עדיפות לעד 2 מילים`}</DrawerDescription>
     </DrawerHeader>
     <AddEquipmentForm />

@@ -4,7 +4,7 @@ import AddEquipmentDrawer from './AddEquipmentDrawer'
 function EquipmentComp() {
   return (
     <div>
-      <AddEquipmentDrawer text='ציוד' />
+      <AddEquipmentDrawer  />
     </div>
   )
 }

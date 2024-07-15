@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
 import { Separator } from "../ui/separator";
 import labels from "./../../../Labels/ManagerView.json";
-import AddEquipmentDrawer from "./Components/Equipment/AddEquipmentDrawer";
+
+import EventsCards from "../EventsCards";
 import AddEventDrawer from "./Components/Events/AddEventDrawer";
 import EventsTable from "./Components/Events/EventsTable";
 import MonthSlider from "./Components/MonthSlider";
@@ -31,7 +32,7 @@ function ManagerView({ user }: { user: UserType }) {
 				<MonthSlider setSelectedMonth={setSelectedMonth} selectedMonth={selectedMonth}/>
 			</header>
 			<Separator />
-			<AddEventDrawer text={labels.addEventBtn} />
+			
 
 			<Tabs defaultValue="table" dir="rtl">
 				<TabsList className="w-full flex justify-center">
@@ -45,10 +46,12 @@ function ManagerView({ user }: { user: UserType }) {
 				<TabsContent value="table">
 					<EventsTable selectedMonth={selectedMonth}/>
 				</TabsContent>
-				<TabsContent value="cards">Change your password here.</TabsContent>
+				<TabsContent value="cards">
+					<EventsCards selectedMonth={selectedMonth} user={user} />
+				</TabsContent>
 			</Tabs>
 			<Separator />
-			<AddEquipmentDrawer text={`הוסף פריט חדש`}/>
+				<AddEventDrawer />
 		</div>
 	);
 }

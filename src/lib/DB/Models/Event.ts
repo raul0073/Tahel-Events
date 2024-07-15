@@ -61,7 +61,7 @@ export type EventType = {
     employee?: string;
   }
   
-  export type EventsStateType ={
+  export type EventsStateType = {
     [month: number]: EventType[];
   }
   

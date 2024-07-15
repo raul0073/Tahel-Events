@@ -1,10 +1,10 @@
 "use client";
-
 import EmployeeView from "@/components/EmployeeView/EmployeeView";
 import ManagerView from "@/components/ManagerView/ManagerView";
+import ProtectedRoute from "@/components/ManagerView/Utils/ProtectedRoute";
 import { UserType } from "@/lib/DB/Models/Employee";
 import { RootState } from "@/lib/store";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import secureLocalStorage from "react-secure-storage";
@@ -13,7 +13,6 @@ function Page() {
 	const [isManager, setIsManager] = useState<boolean>(false)
 	const router = useRouter();
 	const user = useSelector((state: RootState) => state.employee.employee);
-
 	useEffect(() => {
         const localUser = secureLocalStorage.getItem("USER") as UserType | null;
 
@@ -39,7 +38,10 @@ function Page() {
 	} 
 
 	if(!isManager){
-		return (<EmployeeView user={user}/>);
+		return (
+
+			<EmployeeView user={user}/>
+	);
 	}
 	
 }

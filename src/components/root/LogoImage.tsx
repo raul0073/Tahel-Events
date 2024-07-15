@@ -1,15 +1,15 @@
 import React from 'react'
 import tahellogo from "./../../../public/tahel.jpg";
 import Image from "next/image";
-function LogoImage() {
+function LogoImage({cssClass} : {cssClass: string}) {
   return (
     <Image
     src={tahellogo}
     width={80}
     height={80}
-    className="rounded-full"
+    className={cssClass}
     alt="logo"
-/>
+    />
   )
 }
 

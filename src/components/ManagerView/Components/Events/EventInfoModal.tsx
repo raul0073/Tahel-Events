@@ -1,11 +1,11 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import {
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
+	DialogContent,
+	DialogDescription,
+	DialogFooter,
+	DialogHeader,
+	DialogTitle,
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
@@ -13,22 +13,25 @@ import { toast } from "@/components/ui/use-toast";
 import { EventType } from "@/lib/DB/Models/Event";
 import { addEventStore } from "@/lib/features/eventsSlice";
 import { RootState } from "@/lib/store";
-import { CheckIcon } from "@radix-ui/react-icons";
+import { Spinner } from "@radix-ui/themes";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { markEventEmployee } from "../../../../../Services/markEvent";
+import AssignedEventComp from "./AssignedEventComp";
 
 function EventInfoModal({ event }: { event: EventType }) {
 	const dispatch = useDispatch();
 	// flag modal view
 	const [clicked, setClicked] = useState<boolean>(false);
+	const [loading, setLoading] = useState<boolean>(false);
 	// get user
 	const emp = useSelector((state: RootState) => state.employee.employee);
 	// handle mark event
 	const handleClick = async () => {
 		try {
+			setLoading(true);
 			const res = await markEventEmployee(event, emp._id);
-            console.log(res)
+			console.log(res);
 			if (res.error) {
 				toast({
 					title: res.error,
@@ -42,6 +45,8 @@ function EventInfoModal({ event }: { event: EventType }) {
 			}
 		} catch (err) {
 			console.log(err);
+		} finally {
+			setLoading(false);
 		}
 	};
 	return (
@@ -68,13 +73,25 @@ function EventInfoModal({ event }: { event: EventType }) {
 					</p>
 				);
 			})}
-				<Separator />
+			<Separator />
 			<DialogFooter className="py-4 w-full flex justify-center items-center">
 				{!event.isAssigned ? (
-					<Button onClick={() => handleClick()}>השתבץ לאירוע</Button>
-				): (<>
-					<CheckIcon color={'green'} /> <h3>עובד: {event.employee}</h3>
-				</>)}
+					<Button
+						className="w-full"
+						type="submit"
+						onClick={() => handleClick()}
+						disabled={loading ? true : false}>
+						<Spinner
+							loading={loading ? true : false}
+							size="2"
+							className="mx-1"></Spinner>{" "}
+						{`השתבץ לאירוע`}
+					</Button>
+				) : (
+					<>
+						<AssignedEventComp emp={emp} event={event} />
+					</>
+				)}
 			</DialogFooter>
 		</DialogContent>
 	);

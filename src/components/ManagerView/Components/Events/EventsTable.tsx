@@ -20,24 +20,28 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
-import { EventType } from "@/lib/DB/Models/Event";
+import { EventType, EventsStateType } from "@/lib/DB/Models/Event";
 import { RootState } from "@/lib/store";
-import { Fragment, useState } from "react";
+import { Fragment, Suspense, useState } from "react";
 import { useSelector } from "react-redux";
 import EventsTableSkeleton from "./EventsTableSkeleton";
 import EventInfoModal from "./EventInfoModal";
 
-function EventsTable({ selectedMonth }: { selectedMonth: number }) {
+function EventsTable({ selectedMonth, customEvents }: { selectedMonth: number, customEvents?: EventType[] }) {
 	const [showEvent, setShowEvent] = useState<boolean>(false);
-	const events = useSelector((state: RootState) => state.events[selectedMonth]);
+	let events = useSelector((state: RootState) => state.events[selectedMonth]);
 	
 	if (!events) {
 		return <EventsTableSkeleton />;
 	}
+	customEvents?
+	events = customEvents:
+	events = events;
 	
 	const sortedEvents = [...events].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 	return (
 		<Fragment>
+			<Suspense fallback={<EventsTableSkeleton />}>
 			<Table>
 				<TableCaption>העלאה לרז בעוד יומיים</TableCaption>
 				<TableHeader>
@@ -78,6 +82,7 @@ function EventsTable({ selectedMonth }: { selectedMonth: number }) {
 					})}
 				</TableBody>
 			</Table>
+			</Suspense>
 		</Fragment>
 	);
 }

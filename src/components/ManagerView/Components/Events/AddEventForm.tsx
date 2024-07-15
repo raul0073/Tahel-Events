@@ -20,9 +20,11 @@ import { z } from "zod"
 import { addEventService } from "../../../../../Services/addEventService"
 import { addEventSchema } from '../../../../../ZodSchema/addEventSchema'
 import SelectEquipment from "../Equipment/SelectEquipment"
+import AddressSearch from "../AddressSearch/AddressSearch"
 
 function AddEventForm() {
   const [selected, setSelected] = useState<string[]>([]);
+
   const dispatch = useDispatch()
     const form = useForm<z.infer<typeof addEventSchema>>({
         resolver: zodResolver(addEventSchema),
@@ -140,6 +142,7 @@ function AddEventForm() {
             </FormItem>
           )}
         />
+        {/* <AddressSearch /> */}
      
         <Button type="submit" className="w-full">הוסף</Button>
       </form>

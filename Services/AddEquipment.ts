@@ -1,10 +1,12 @@
+'use server'
 import { UserLoginType } from "@/lib/DB/Models/Employee";
 import { EquipmentDTO, EquipmentType } from "@/lib/DB/Models/Equipment";
-
+const {localhost} = process.env
 
 export const addEquipmentService = async (data: EquipmentDTO) => {
     try {
-        const res = await fetch(`api/equipment`, {
+      console.log(localhost)
+        const res = await fetch(`${localhost}/api/equipment`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
