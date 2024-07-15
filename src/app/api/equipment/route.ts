@@ -41,3 +41,4 @@ export async function POST(req: NextRequest, res:NextResponse) {
         return NextResponse.json(err, { status: 500 });
     }
 }
+

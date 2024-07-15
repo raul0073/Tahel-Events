@@ -15,6 +15,7 @@ import { EquipmentType } from "@/lib/DB/Models/Equipment";
 import { RootState } from "@/lib/store";
 import { useSelector } from "react-redux";
 import EditEquipmentComp from "./components/EditEquipmentComp";
+import { Separator } from "@/components/ui/separator";
 function Page() {
 	const equipment = useSelector(
 		(state: RootState) => state.equipment.equipment
@@ -22,6 +23,12 @@ function Page() {
 	const [selectedItem, setSelectedItem] = useState<EquipmentType | null>(null);
 	return (
 		<>
+					<header>
+			<h2 className="font-semibold text-2xl mb-4 text-appLightPurple text-center">
+     			 {`כל הציוד`}
+			</h2>
+			</header>
+			<Separator />
 			<Command className="rounded-lg border shadow-md">
 				<CommandInput placeholder="חפש ציוד לפי שם..." />
 				<CommandList>

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import EventsTable from '../ManagerView/Components/Events/EventsTable'
-import { getEqData, getEventsData } from '../ManagerView/Utils/functions'
+import EventsTable from '../root/Events/EventsTable'
+import { getEqData, getEventsData } from '../root/Utils/functions'
 import { Separator } from "../ui/separator"
 import labels from "./../../../Labels/ManagerView.json"
-import MonthSlider from '../ManagerView/Components/MonthSlider'
+import MonthSlider from '../root/MonthSlider'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { UserType } from '@/lib/DB/Models/Employee'
 import EventsCards from '../EventsCards'
@@ -20,10 +20,10 @@ function EmployeeView({user} : {user: UserType}) {
 	}, [dispatch]);
   return (
     <section className="empolyee">
-     <div className="flex flex-col space-y-4">
+     <div className="flex flex-col space-y-4 items-center text-center">
 			<header>
-			<h2 className="font-semibold text-xl">
-      {}
+			<h2 className="font-semibold text-2xl mb-4 text-[#C3ACD0]">
+      {`כל האירועים`}
 			</h2>
 				<MonthSlider setSelectedMonth={setSelectedMonth} selectedMonth={selectedMonth}/>
 			</header>

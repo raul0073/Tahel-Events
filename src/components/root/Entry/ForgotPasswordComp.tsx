@@ -1,12 +1,12 @@
 'use client'
 import { Dispatch } from "@reduxjs/toolkit";
-import labels from "../../../Labels/Entry.json";
-import { Button } from "../ui/button";
+import labels from "../../../../Labels/Entry.json";
+import { Button } from "../../ui/button";
 import {
   CardContent,
   CardDescription
-} from "../ui/card";
-import { Input } from "../ui/input";
+} from "../../ui/card";
+import { Input } from "../../ui/input";
 import { Fragment } from 'react';
 function ForgotPasswordComp( ) {
   return (

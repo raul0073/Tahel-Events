@@ -1,6 +1,6 @@
 'use client'
-import EventsTable from '@/components/ManagerView/Components/Events/EventsTable'
-import MonthSlider from '@/components/ManagerView/Components/MonthSlider'
+import EventsTable from '@/components/root/Events/EventsTable'
+import MonthSlider from '@/components/root/MonthSlider'
 import { Separator } from '@/components/ui/separator'
 import { Skeleton } from '@/components/ui/skeleton'
 import { EventType } from '@/lib/DB/Models/Event'
@@ -16,7 +16,6 @@ function Page() {
         redirect('/main')
     }
     const eventsList = useSelector((state: RootState) => state.events[selectedMonth]?.filter((event: EventType) => event.employee === `${emp.first_name} ${emp.last_name}`)) || []
-    console.log(eventsList)
     useEffect(()=> {
 
     },[selectedMonth])
@@ -24,9 +23,15 @@ function Page() {
   return (
     <>
         <Suspense fallback={<Skeleton className='h-[300px] w-full rounded-md'/>}>
-           <MonthSlider selectedMonth={selectedMonth} setSelectedMonth={setSelectedMonth} />
-           <Separator />
-            <div className="my-2">
+        <div className="flex flex-col space-y-4 items-center text-center">
+			<header>
+			<h2 className="font-semibold text-2xl mb-4 text-[#C3ACD0]">
+      {` האירועים שלי`}
+			</h2>
+				<MonthSlider setSelectedMonth={setSelectedMonth} selectedMonth={selectedMonth}/>
+			</header>
+			<Separator />
+      <div className="my-2">
             {
                eventsList.length > 0 ? (
                 <EventsTable customEvents={eventsList} selectedMonth={selectedMonth} />
@@ -36,6 +41,8 @@ function Page() {
                )
             }
             </div>
+		</div>
+            
         </Suspense>
     </>
   )

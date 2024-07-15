@@ -4,7 +4,7 @@ import { RootState } from '@/lib/store';
 import { CheckIcon } from '@radix-ui/react-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { markEventEmployee } from '../../Services/markEvent';
-import EventsTableSkeleton from './ManagerView/Components/Events/EventsTableSkeleton';
+import EventsTableSkeleton from './root/Events/EventsTableSkeleton';
 import { Button } from './ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from './ui/card';
 import { Separator } from './ui/separator';

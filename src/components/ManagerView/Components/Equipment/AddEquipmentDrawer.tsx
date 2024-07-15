@@ -17,12 +17,12 @@ import AddEquipmentForm from './AddEquipmentForm'
 function AddEquipmentDrawer() {
   return (
     <Drawer>
-  <DrawerTrigger className='fixed bottom-[7vh] right-5 z-10 bg-primary h-10 w-10 rounded-full hover:scale-105'>
+  <DrawerTrigger className='fixed bottom-[7vh] right-5 z-10 bg-primary h-[3rem] w-[3rem] rounded-full hover:scale-105'>
     <PlusCircledIcon color='white' className="w-full h-full rounded-full"/>
   </DrawerTrigger>
   <DrawerContent>
     <DrawerHeader>
-      <DrawerTitle>{'הוסף ציוד חדש'}</DrawerTitle>
+      <DrawerTitle className='text-appLightPurple'>{'הוסף ציוד חדש'}</DrawerTitle>
       <DrawerDescription>{`עדיפות לעד 2 מילים`}</DrawerDescription>
     </DrawerHeader>
     <AddEquipmentForm />

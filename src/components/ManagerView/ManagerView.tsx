@@ -7,9 +7,9 @@ import labels from "./../../../Labels/ManagerView.json";
 
 import EventsCards from "../EventsCards";
 import AddEventDrawer from "./Components/Events/AddEventDrawer";
-import EventsTable from "./Components/Events/EventsTable";
-import MonthSlider from "./Components/MonthSlider";
-import { getEqData, getEventsData } from "./Utils/functions";
+import EventsTable from "../root/Events/EventsTable";
+import MonthSlider from "../root/MonthSlider";
+import { getEqData, getEventsData } from "../root/Utils/functions";
 
 function ManagerView({ user }: { user: UserType }) {
 
@@ -25,9 +25,8 @@ function ManagerView({ user }: { user: UserType }) {
 	return (
 		<div className="flex flex-col space-y-4">
 			<header>
-			<h2 className="font-semibold text-xl mb-4">
-				{labels.header1}
-				{user.first_name}, {labels.header2}
+			<h2 className="font-semibold text-2xl mb-4 text-[#C3ACD0] text-center">
+     			 {`כל האירועים`}
 			</h2>
 				<MonthSlider setSelectedMonth={setSelectedMonth} selectedMonth={selectedMonth}/>
 			</header>

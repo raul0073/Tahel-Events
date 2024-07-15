@@ -16,8 +16,8 @@ import { RootState } from "@/lib/store";
 import { Spinner } from "@radix-ui/themes";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { markEventEmployee } from "../../../../../Services/markEvent";
-import AssignedEventComp from "./AssignedEventComp";
+import { markEventEmployee } from "../../../../Services/markEvent";
+import AssignedEventComp from "../../ManagerView/Components/Events/AssignedEventComp";
 
 function EventInfoModal({ event }: { event: EventType }) {
 	const dispatch = useDispatch();

@@ -1,7 +1,7 @@
 "use client";
 import EmployeeView from "@/components/EmployeeView/EmployeeView";
 import ManagerView from "@/components/ManagerView/ManagerView";
-import ProtectedRoute from "@/components/ManagerView/Utils/ProtectedRoute";
+import ProtectedRoute from "@/components/root/Utils/ProtectedRoute";
 import { UserType } from "@/lib/DB/Models/Employee";
 import { RootState } from "@/lib/store";
 import { usePathname, useRouter } from "next/navigation";

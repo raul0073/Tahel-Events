@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import labels from "../../../Labels/Entry.json";
+import labels from "../../../../Labels/Entry.json";
 import { zodResolver } from "@hookform/resolvers/zod";
 import  secureLocalStorage  from  "react-secure-storage";
 import Link from "next/link";
@@ -8,8 +8,8 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { z } from "zod";
-import { loginUser } from "../../../Services/login";
-import { loginSchema } from "../../../ZodSchema/loginSchema";
+import { loginUser } from "../../../../Services/login";
+import { loginSchema } from "../../../../ZodSchema/loginSchema";
 import {
 	Card,
 	CardContent,
@@ -17,13 +17,14 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "../ui/card";
-import { useToast } from "../ui/use-toast";
+} from "../../ui/card";
+import { useToast } from "../../ui/use-toast";
+
+import { addEmployeeToStore } from "@/lib/features/employeeSlice";
+import { Button } from "../../ui/button";
+import LogoImage from '../Components/LogoImage'
 import ForgotPasswordComp from "./ForgotPasswordComp";
 import LoginForm from "./LoginForm";
-import { addEmployeeToStore } from "@/lib/features/employeeSlice";
-import { Button } from "../ui/button";
-import LogoImage from './LogoImage'
 
 function Entry() {
 	// states
@@ -69,7 +70,7 @@ function Entry() {
 		<section className="entry w-full flex flex-col items-center justify-center lg:w-2/3">
 			<Card className="w-full md:w-1/2">
 				<CardHeader className="text-center">
-					<CardTitle className="text-4xl font-extrabold  text-[#C3ACD0]">
+					<CardTitle className="text-4xl font-extrabold  text-appLightPurple">
 						{labels.header}
 					</CardTitle>
 					<CardDescription>

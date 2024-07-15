@@ -20,7 +20,6 @@ import { z } from "zod"
 import { addEventService } from "../../../../../Services/addEventService"
 import { addEventSchema } from '../../../../../ZodSchema/addEventSchema'
 import SelectEquipment from "../Equipment/SelectEquipment"
-import AddressSearch from "../AddressSearch/AddressSearch"
 
 function AddEventForm() {
   const [selected, setSelected] = useState<string[]>([]);

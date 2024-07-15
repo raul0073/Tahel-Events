@@ -9,10 +9,10 @@ import {
 import { Spinner } from "@radix-ui/themes";
 import { SetStateAction } from "react";
 import { z } from "zod";
-import labels from "../../../Labels/Entry.json";
-import { loginSchema } from "../../../ZodSchema/loginSchema";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
+import labels from "../../../../Labels/Entry.json";
+import { loginSchema } from "../../../../ZodSchema/loginSchema";
+import { Button } from "../../ui/button";
+import { Input } from "../../ui/input";
 function LoginForm({
 	form,
 	onSubmit,

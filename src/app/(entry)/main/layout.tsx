@@ -1,5 +1,5 @@
-import FooterComp from "@/components/root/FooterComp";
-import Navbar from "@/components/root/Navbar";
+import FooterComp from "@/components/root/Components/FooterComp";
+import Navbar from "@/components/root/Components/Navbar";
 import React, { ReactNode } from "react";
 
 function Layout({ children }: { children: ReactNode }) {

@@ -16,13 +16,13 @@ import labels from '../../../../../Labels/AddEvent.json'
 function AddEventDrawer() {
   return (
     <Drawer>
-  <DrawerTrigger className='fixed bottom-[7vh] right-5 z-10 bg-primary h-10 w-10 rounded-full hover:scale-105'>
+  <DrawerTrigger className='fixed bottom-[7vh] right-5 z-10 bg-primary h-[3rem] w-[3rem] rounded-full hover:scale-105'>
     <PlusCircledIcon color='white' className="w-full h-full rounded-full"/>
   </DrawerTrigger>
   <DrawerContent>
     <DrawerHeader>
-      <DrawerTitle>{labels.addEventHeader}</DrawerTitle>
-      <DrawerDescription>{labels.addEventSubTitle}</DrawerDescription>
+      <DrawerTitle className='text-appLightPurple'>{labels.addEventSubTitle}</DrawerTitle>
+      <DrawerDescription>{labels.addEventHeader}</DrawerDescription>
     </DrawerHeader>
     <AddEventForm />
     <DrawerFooter>

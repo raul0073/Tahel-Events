@@ -49,7 +49,7 @@ function AssignedEventComp({
 					<CheckIcon color={"green"} height={30} width={30} /> עובד:{" "}
 					{event.employee}
 					<div className="w-full flex justify-end items-center">
-						{event.employee?.trim() === empName.trim() ? (
+						{event.employee?.trim() === empName.trim() || emp.isManager ? (
 							<Button
 								className="w-full"
 								type="submit"
