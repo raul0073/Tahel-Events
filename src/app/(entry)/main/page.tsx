@@ -11,8 +11,9 @@ import secureLocalStorage from "react-secure-storage";
 
 function Page() {
 	const [isManager, setIsManager] = useState<boolean>(false);
+	const [thisUser, setThisUser] = useState<UserType>();
 	const router = useRouter();
-	const user = useSelector((state: RootState) => state.employee.employee);
+	const user = useSelector((state: RootState) => state.employee.employee) || thisUser;
 	useEffect(() => {
 		const localUser = secureLocalStorage.getItem("USER") as UserType | null;
 
@@ -20,7 +21,7 @@ function Page() {
 			router.replace("/");
 			return;
 		}
-
+		setThisUser(localUser)
 		if (typeof localUser.isManager === "boolean") {
 			setIsManager(localUser.isManager);
 		} else {

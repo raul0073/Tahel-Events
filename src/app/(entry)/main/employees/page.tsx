@@ -23,7 +23,7 @@ function Page() {
 		<section className="account">
 			<div className="flex flex-col space-y-4 items-center text-center">
 				<header>
-					<h2 className="font-semibold text-2xl mb-4 text-[#C3ACD0]">
+					<h2 className="font-semibold text-2xl mb-4 text-appLightPurple">
 						{` ניהול עובדים `}
 					</h2>
 				</header>

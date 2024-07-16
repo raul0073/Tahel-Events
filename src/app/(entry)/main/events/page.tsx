@@ -31,13 +31,16 @@ function Page() {
 			<Suspense fallback={<Skeleton className="h-[300px] w-full rounded-md" />}>
 				<div className="flex flex-col space-y-4 items-center text-center">
 					<header>
-						<h2 className="font-semibold text-2xl mb-4 text-[#C3ACD0]">
+						<h2 className="font-semibold text-2xl mb-4 text-appLightPurple">
 							{` האירועים שלי`}
 						</h2>
 						<MonthSlider
 							setSelectedMonth={setSelectedMonth}
 							selectedMonth={selectedMonth}
 						/>
+						{eventsList.length > 0 && (
+							<p>{`סה"כ אירועים החודש ${eventsList.length}`}</p>
+						)}
 					</header>
 					<Separator />
 					<div className="w-full my-2">
