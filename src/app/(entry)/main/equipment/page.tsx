@@ -29,7 +29,7 @@ function Page() {
 			</h2>
 			</header>
 			<Separator />
-			<Command className="rounded-lg border shadow-md">
+			<Command className="rounded-lg border shadow-md mt-1">
 				<CommandInput placeholder="חפש ציוד לפי שם..." />
 				<CommandList>
 					<CommandEmpty> לא נמצא...</CommandEmpty>

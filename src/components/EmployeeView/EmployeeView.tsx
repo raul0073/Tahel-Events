@@ -20,7 +20,7 @@ function EmployeeView({user} : {user: UserType}) {
 	}, [dispatch]);
   return (
     <section className="empolyee">
-     <div className="flex flex-col space-y-4 items-center text-center">
+     <div className="w-full flex flex-col space-y-4 items-center text-center">
 			<header>
 			<h2 className="font-semibold text-2xl mb-4 text-[#C3ACD0]">
       {`כל האירועים`}
@@ -28,7 +28,7 @@ function EmployeeView({user} : {user: UserType}) {
 				<MonthSlider setSelectedMonth={setSelectedMonth} selectedMonth={selectedMonth}/>
 			</header>
 			<Separator />
-			<Tabs defaultValue="table" dir="rtl">
+			<Tabs defaultValue="table" dir="rtl" className="w-[98%]">
 				<TabsList className="w-full flex justify-center">
 					<TabsTrigger value="table" className="w-full">
 						טבלה

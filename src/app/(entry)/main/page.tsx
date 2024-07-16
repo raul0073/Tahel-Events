@@ -10,40 +10,39 @@ import { useSelector } from "react-redux";
 import secureLocalStorage from "react-secure-storage";
 
 function Page() {
-	const [isManager, setIsManager] = useState<boolean>(false)
+	const [isManager, setIsManager] = useState<boolean>(false);
 	const router = useRouter();
 	const user = useSelector((state: RootState) => state.employee.employee);
 	useEffect(() => {
-        const localUser = secureLocalStorage.getItem("USER") as UserType | null;
+		const localUser = secureLocalStorage.getItem("USER") as UserType | null;
 
-        if (!localUser) {
-            router.replace("/");
-            return;
-        }
+		if (!localUser) {
+			router.replace("/");
+			return;
+		}
 
-        if (typeof localUser.isManager === 'boolean') {
-            setIsManager(localUser.isManager);
-        } else {
-            router.replace("/");
-        }
-    }, [router]);
-
+		if (typeof localUser.isManager === "boolean") {
+			setIsManager(localUser.isManager);
+		} else {
+			router.replace("/");
+		}
+	}, [router]);
 
 	if (isManager) {
 		return (
-		<Suspense fallback={<span>Loading...</span>}>
-			<ManagerView user={user}/>
-		</Suspense>
-	)
-	} 
-
-	if(!isManager){
-		return (
-
-			<EmployeeView user={user}/>
-	);
+			<Suspense fallback={<span>Loading...</span>}>
+				<ManagerView user={user} />
+			</Suspense>
+		);
 	}
-	
+
+	if (!isManager) {
+		return (
+			<Suspense fallback={<span>Loading...</span>}>
+				<EmployeeView user={user} />
+			</Suspense>
+		);
+	}
 }
 
 export default Page;

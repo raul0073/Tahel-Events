@@ -66,7 +66,7 @@ function EventsTable({ selectedMonth, customEvents }: { selectedMonth: number, c
 											<TableCell className="">
 												{new Date(event.date).toLocaleDateString("il")}
 											</TableCell>
-											<TableCell>{event.location}</TableCell>
+											<TableCell className="text-right">{event.location}</TableCell>
 											<TableCell>
 												{event.start}:00-{event.end}:00
 											</TableCell>

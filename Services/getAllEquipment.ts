@@ -1,8 +1,10 @@
 
 
+'use server'
+const {localhost} = process.env
 export const getAllEquipmentService = async () => {
     try {
-        const res = await fetch(`api/equipment`, {
+        const res = await fetch(`${localhost}/api/equipment`, {
           method: 'GET',
           cache: "no-cache",
           headers: {

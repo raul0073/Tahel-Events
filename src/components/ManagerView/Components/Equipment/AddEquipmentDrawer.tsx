@@ -17,7 +17,7 @@ import AddEquipmentForm from './AddEquipmentForm'
 function AddEquipmentDrawer() {
   return (
     <Drawer>
-  <DrawerTrigger className='fixed bottom-[7vh] right-5 z-10 bg-primary h-[3rem] w-[3rem] rounded-full hover:scale-105'>
+  <DrawerTrigger className='fixed bottom-[8vh] right-5 z-10 bg-primary h-[3rem] w-[3rem] rounded-full hover:scale-105'>
     <PlusCircledIcon color='white' className="w-full h-full rounded-full"/>
   </DrawerTrigger>
   <DrawerContent>

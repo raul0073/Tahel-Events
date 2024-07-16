@@ -1,7 +1,7 @@
 import { Separator } from '@/components/ui/separator'
 import React from 'react'
 
-function page() {
+function Page() {
   return (
     <section className="account">
 
@@ -17,4 +17,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

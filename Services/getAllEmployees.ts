@@ -2,9 +2,10 @@
 'use server'
 const {localhost} = process.env
 
-export const getAllEventsService = async () => {
+
+export const getAllEmployeesService = async () => {
     try {
-        const res = await fetch(`${localhost}/api/events`, {
+        const res = await fetch(`${localhost}/api/employees`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -17,8 +18,7 @@ export const getAllEventsService = async () => {
     
         return res.json()
       } catch (err) {
-        console.log("cant get events details", err);
+        console.log("cant get employees list", err);
       }
 
 }
-
