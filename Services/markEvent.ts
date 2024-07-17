@@ -1,7 +1,8 @@
+const {localhost} = process.env
 
 export const markEventEmployee = async (data: unknown, id: string) => {
     try {
-        const res = await fetch(`api/employee/${id}`, {
+        const res = await fetch(`${localhost}/api/employee/${id}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -21,7 +22,7 @@ export const markEventEmployee = async (data: unknown, id: string) => {
 }
 export const unMarkEventEmployee = async (data: unknown, id: string) => {
     try {
-        const res = await fetch(`api/employee/${id}`, {
+        const res = await fetch(`${localhost}/api/employee/${id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
