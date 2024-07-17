@@ -4,14 +4,14 @@ import React, { ReactNode } from "react";
 
 function Layout({ children }: { children: ReactNode }) {
 	return (
-		<section className="relative mx-auto min-h-screen w-full md:w-2/3">
+		<section className="relative mx-auto min-h-screen w-full lg:w-2/3 lg:border-x-2">
 			<nav className="w-full">
 				<Navbar />
 			</nav>
-			<main className="mx-auto min-h-[80vh] w-[98%] md:w-2/3 pt-12">
+			<main className="mx-auto min-h-[80vh] w-[98%] pt-12">
 				{children}
 			</main>
-			<footer className="w-full md:w-2/3 fixed bottom-0">
+			<footer className="w-full lg:w-2/3 fixed bottom-0">
 				<FooterComp />
 			</footer>
 		</section>

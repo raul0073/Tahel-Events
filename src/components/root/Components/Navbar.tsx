@@ -19,19 +19,15 @@ function Navbar() {
 			<div className="p-2 flex justify-between w-full items-center">
 				{
 					path === '/main' ? (
-						<ExitIcon color="white" onClick={()=> logout()} className="w-10 h-10 cursor-pointer hover:scale-105 hover:text-white"/>
+						<ExitIcon color="red" onClick={()=> logout()} className="w-10 h-10 cursor-pointer hover:scale-105"/>
 					) : (
 						<ArrowRightIcon color="white" onClick={()=> router.back()} className="w-10 h-10 cursor-pointer hover:scale-105 hover:text-white"/>
 					)
 				}
 
 				<LogoImage cssClass="rounded-full place-center" />
-			
-				
 			</div>
-			
 		</div>
 	);
 }
-
 export default Navbar;

@@ -5,7 +5,7 @@ const {localhost} = process.env
 
 export const getAllEmployeesService = async () => {
     try {
-        const res = await fetch(`${localhost}/api/employees`, {
+        const res = await fetch(`${localhost}/api/employee`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

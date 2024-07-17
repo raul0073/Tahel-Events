@@ -1,35 +1,35 @@
 "use client";
 import EmployeeView from "@/components/EmployeeView/EmployeeView";
 import ManagerView from "@/components/ManagerView/ManagerView";
-import ProtectedRoute from "@/components/root/Utils/ProtectedRoute";
 import { UserType } from "@/lib/DB/Models/Employee";
+import { addEmployeeToListStore } from "@/lib/features/employeeSlice";
 import { RootState } from "@/lib/store";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import secureLocalStorage from "react-secure-storage";
 
 function Page() {
-	const [isManager, setIsManager] = useState<boolean>(false);
-	const [thisUser, setThisUser] = useState<UserType>();
+	const dispatch = useDispatch()
 	const router = useRouter();
-	const user = useSelector((state: RootState) => state.employee.employee) || thisUser;
+
+	const [thisUser, setThisUser] = useState<UserType>();
 	useEffect(() => {
 		const localUser = secureLocalStorage.getItem("USER") as UserType | null;
-
 		if (!localUser) {
 			router.replace("/");
 			return;
 		}
 		setThisUser(localUser)
-		if (typeof localUser.isManager === "boolean") {
-			setIsManager(localUser.isManager);
-		} else {
-			router.replace("/");
-		}
 	}, [router]);
+	
+	const user = useSelector((state: RootState) => state.employee.employee);
+	
+	if(!user && thisUser){
+		dispatch(addEmployeeToListStore(thisUser))
+	}
 
-	if (isManager) {
+	if (thisUser?.isManager) {
 		return (
 			<Suspense fallback={<span>Loading...</span>}>
 				<ManagerView user={user} />
@@ -37,7 +37,7 @@ function Page() {
 		);
 	}
 
-	if (!isManager) {
+	if (!thisUser?.isManager) {
 		return (
 			<Suspense fallback={<span>Loading...</span>}>
 				<EmployeeView user={user} />

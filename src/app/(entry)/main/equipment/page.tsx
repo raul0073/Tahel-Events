@@ -23,12 +23,13 @@ function Page() {
 	const [selectedItem, setSelectedItem] = useState<EquipmentType | null>(null);
 	return (
 		<>
-					<header>
+			<header>
 			<h2 className="font-semibold text-2xl mb-4 text-appLightPurple text-center">
      			 {`כל הציוד`}
 			</h2>
 			</header>
 			<Separator />
+			<div className="p-2">
 			<Command className="rounded-lg border shadow-md mt-1">
 				<CommandInput placeholder="חפש ציוד לפי שם..." />
 				<CommandList>
@@ -47,6 +48,7 @@ function Page() {
 					<CommandSeparator />
 				</CommandList>
 			</Command>
+			</div>
 			{selectedItem && <EditEquipmentComp selectedItem={selectedItem} />}
 			<AddEquipmentDrawer />
 		</>

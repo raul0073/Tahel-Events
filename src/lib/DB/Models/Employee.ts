@@ -33,7 +33,8 @@ const employeeSchema = new Schema({
         type: Boolean,
         required: true,
         default: false,
-    }
+    },
+    lastSeen: { type: Date, default: null }
 }, {
     timestamps: true
 },
@@ -60,4 +61,5 @@ export type UserType = {
     password: string,
     phone_number: string,
     isManager: boolean,
+    lastSeen?: Date;
 }

@@ -25,7 +25,8 @@ import { Button } from "../../ui/button";
 import LogoImage from '../Components/LogoImage'
 import ForgotPasswordComp from "./ForgotPasswordComp";
 import LoginForm from "./LoginForm";
-
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { MdOutlineLogin, MdOutlineLockOpen } from "react-icons/md";
 function Entry() {
 	// states
 	const [loading, setLoading] = useState<boolean>(false);
@@ -69,9 +70,18 @@ function Entry() {
 	return (
 		<section className="entry w-full flex flex-col items-center justify-center lg:w-2/3">
 			<Card className="w-full md:w-1/2">
-				<CardHeader className="text-center">
+				<CardHeader className="text-center ">
+					<div className="w-full justify-center items-center flex py-2">
+						{!forgotPass && (
+							<MdOutlineLogin className="w-20 h-20 text-appBege text-center  place-center"/>
+						)}
+							{forgotPass && (
+							<MdOutlineLockOpen  className="w-20 h-20 text-appBege text-center  place-center"/>
+						)}
+					</div>
 					<CardTitle className="text-4xl font-extrabold  text-appLightPurple">
-						{labels.header}
+					{forgotPass && labels.passRetrieve}
+						{!forgotPass && labels.header}
 					</CardTitle>
 					<CardDescription>
 						{new Date().toLocaleDateString("il")}
@@ -85,7 +95,7 @@ function Entry() {
 				)}
 				<CardFooter className="flex flex-col space-y-4">
 					<CardDescription>
-						<Button variant={'link'} className=" text-[#C3ACD0]" onClick={() => setForgotPass(!forgotPass)}>
+						<Button variant={'link'} className=" text-appLightPurple" onClick={() => setForgotPass(!forgotPass)}>
 							{!forgotPass ? (
 								<span>שכחתי סיסמה</span>
 							) : (<span>חזרה </span>)}
@@ -94,6 +104,7 @@ function Entry() {
 					
 				</CardFooter>
 			</Card>
+			<h3></h3>
 		</section>
 	);
 }

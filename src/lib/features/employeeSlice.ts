@@ -26,7 +26,7 @@ export const employeeSlice = createSlice({
       if (!employeeExists) {
         state.employeeList.push(action.payload);
       } else {
-        console.warn(`Employee with ID ${action.payload._id} already exists in the list.`);
+        return
       }
     },
     updateEmployeeInListStore: (state, action: PayloadAction<UserType>) => {

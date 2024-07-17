@@ -21,11 +21,13 @@ export const eventsSlice = createSlice({
           if (!state[month]) {
             state[month] = [];
           }
-          const existingEventIndex = state[month].findIndex(e => e._id === event._id);
-          if (existingEventIndex !== -1 && event.isAssigned) {
-            state[month][existingEventIndex] = event; 
-          } else if (existingEventIndex === -1) {
+          //check if exists
+          const existingEvent = state[month].find(e => e._id === event._id);
+          // if does not exists add,
+          if (!existingEvent) {
             state[month].push(event); 
+          } else {
+            return
           }
         },
         removeEventStore: (state, action: PayloadAction<{ month: number; id: string }>) => {

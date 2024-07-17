@@ -1,26 +1,47 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { UserType } from "@/lib/DB/Models/Employee";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Separator } from "../ui/separator";
-import labels from "./../../../Labels/ManagerView.json";
 
 import EventsCards from "../EventsCards";
-import AddEventDrawer from "./Components/Events/AddEventDrawer";
 import EventsTable from "../root/Events/EventsTable";
 import MonthSlider from "../root/MonthSlider";
-import { getEqData, getEventsData } from "../root/Utils/functions";
+import {
+	getEmployeesData,
+	getEqData,
+	getEventsData,
+} from "../root/Utils/functions";
+import AddEventDrawer from "./Components/Events/AddEventDrawer";
+import { RootState } from "@/lib/store";
 
 function ManagerView({ user }: { user: UserType }) {
 	const [selectedMonth, setSelectedMonth] = useState<number>(
 		new Date().getMonth() + 1
 	);
 	const dispatch = useDispatch();
+	const equipmentInStore = useSelector((state: RootState) => state.equipment.equipment)
+
+	const eventsInStore = useSelector((state: RootState) => state.events)
+	const hasEvents = Object.keys(eventsInStore).length > 0;
+
+		const employeesInStore = useSelector((state: RootState) => state.employee.employeeList)
+		
 
 	useEffect(() => {
-		getEqData(dispatch);
-		getEventsData(dispatch);
-	}, [dispatch]);
+		if(!equipmentInStore.length){
+			getEqData(dispatch);
+		}
+
+		if (!hasEvents) {
+			console.log("DOES NOT")
+			getEventsData(dispatch);
+		}
+		if(!employeesInStore.length){
+			getEmployeesData(dispatch);
+
+		}
+	}, [equipmentInStore.length, employeesInStore.length, hasEvents, dispatch]);
 
 	return (
 		<div className="flex flex-col space-y-4">
@@ -34,7 +55,6 @@ function ManagerView({ user }: { user: UserType }) {
 				/>
 			</header>
 			<Separator />
-
 			<Tabs defaultValue="table" dir="rtl">
 				<TabsList className="w-full flex justify-center">
 					<TabsTrigger value="table" className="w-full">

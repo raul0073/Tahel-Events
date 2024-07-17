@@ -27,7 +27,7 @@ function AddEventDrawer() {
     <AddEventForm />
     <DrawerFooter>
       <DrawerClose>
-        <Button variant="outline">סגור</Button>
+      <Button variant="outline">סגור</Button>
       </DrawerClose>
     </DrawerFooter>
   </DrawerContent>

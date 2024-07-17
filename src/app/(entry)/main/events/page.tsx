@@ -17,13 +17,9 @@ function Page() {
 	if (!emp) {
 		redirect("/main");
 	}
-	const eventsList =
-		useSelector((state: RootState) =>
-			state.events[selectedMonth]?.filter(
-				(event: EventType) =>
-					event.employee === `${emp.first_name} ${emp.last_name}`
-			)
-		) || [];
+	const eventsList = useSelector((state: RootState) => state.events);
+	const empEventsList = eventsList[selectedMonth]?.filter((event: EventType) => event.employee === `${emp.first_name} ${emp.last_name}`) || [];
+
 	useEffect(() => {}, [selectedMonth]);
 
 	return (
@@ -38,15 +34,15 @@ function Page() {
 							setSelectedMonth={setSelectedMonth}
 							selectedMonth={selectedMonth}
 						/>
-						{eventsList.length > 0 && (
-							<p>{`סה"כ אירועים החודש ${eventsList.length}`}</p>
+						{empEventsList.length > 0 && (
+							<p>{`סה"כ החודש:  ${empEventsList.length}`}</p>
 						)}
 					</header>
 					<Separator />
 					<div className="w-full my-2">
-						{eventsList.length > 0 ? (
+						{empEventsList.length > 0 ? (
 							<EventsTable
-								customEvents={eventsList}
+								customEvents={empEventsList}
 								selectedMonth={selectedMonth}
 							/>
 						) : (

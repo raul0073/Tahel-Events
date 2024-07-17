@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { toast } from "@/components/ui/use-toast";
 import { EventType } from "@/lib/DB/Models/Event";
-import { addEventStore } from "@/lib/features/eventsSlice";
+import { addEventStore, updateEventStore } from "@/lib/features/eventsSlice";
 import { RootState } from "@/lib/store";
 import { Spinner } from "@radix-ui/themes";
 import { useState } from "react";
@@ -31,14 +31,13 @@ function EventInfoModal({ event }: { event: EventType }) {
 		try {
 			setLoading(true);
 			const res = await markEventEmployee(event, emp._id);
-			console.log(res);
 			if (res.error) {
 				toast({
 					title: res.error,
 					variant: "destructive",
 				});
 			} else {
-				dispatch(addEventStore(res));
+				dispatch(updateEventStore(res));
 				toast({
 					title: `נרשמת לאירוע בהצלחה`,
 				});

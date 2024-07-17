@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
 import EventsTable from '../root/Events/EventsTable'
 import { getEqData, getEventsData } from '../root/Utils/functions'
 import { Separator } from "../ui/separator"
@@ -8,22 +7,33 @@ import MonthSlider from '../root/MonthSlider'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { UserType } from '@/lib/DB/Models/Employee'
 import EventsCards from '../EventsCards'
-
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/lib/store";
 
 function EmployeeView({user} : {user: UserType}) {
-	const [selectedMonth, setSelectedMonth] = useState<number>(new Date().getMonth() +1)
-	const dispatch = useDispatch()
+	const [selectedMonth, setSelectedMonth] = useState<number>(
+		new Date().getMonth() + 1
+	);
+	const dispatch = useDispatch();
+
+	const eventsInStore = useSelector((state: RootState) => state.events)
+	const hasEvents = Object.keys(eventsInStore).length > 0;
+		
 
 	useEffect(() => {
-		getEqData(dispatch)
-		getEventsData(dispatch)
-	}, [dispatch]);
+		if (!hasEvents) {
+			console.log("DOES NOT")
+			getEventsData(dispatch);
+		}
+	}, [hasEvents, dispatch]);
+
+
   return (
     <section className="empolyee">
      <div className="w-full flex flex-col space-y-4 items-center text-center">
 			<header>
-			<h2 className="font-semibold text-2xl mb-4 text-[#C3ACD0]">
-      {`כל האירועים`}
+			<h2 className="font-semibold text-2xl mb-4 text-appLightPurple">
+     		 {`כל האירועים`}
 			</h2>
 				<MonthSlider setSelectedMonth={setSelectedMonth} selectedMonth={selectedMonth}/>
 			</header>

@@ -16,7 +16,10 @@ export async function POST(req: NextRequest, res: NextResponse) {
         if (user.password !== loginDetails.password) {
             return NextResponse.json({ error: 'סיסמה שגויה' }, { status: 401 });
         }
+        user.lastSeen = new Date()
+        await user.save()
 
+        
         return NextResponse.json({ msg: 'התחברות הושלמה בהצלחה', user: user });
     } catch (err) {
         throw new Error('Cannot login user: ' + err);

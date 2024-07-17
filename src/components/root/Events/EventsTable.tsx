@@ -63,11 +63,11 @@ function EventsTable({ selectedMonth, customEvents }: { selectedMonth: number, c
 											key={event._id}
 											onClick={() => setShowEvent(!showEvent)}
 											className={`rounded-xl hover:cursor-pointer  ${event.isAssigned? 'assigned' : ''}`}>
-											<TableCell className="">
+											<TableCell className="text-right">
 												{new Date(event.date).toLocaleDateString("il")}
 											</TableCell>
 											<TableCell className="text-right">{event.location}</TableCell>
-											<TableCell>
+											<TableCell className="text-right">
 												{event.start}:00-{event.end}:00
 											</TableCell>
 											<TableCell className="text-center">

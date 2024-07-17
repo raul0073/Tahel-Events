@@ -1,3 +1,4 @@
+'use server'
 const {localhost} = process.env
 
 export const markEventEmployee = async (data: unknown, id: string) => {
