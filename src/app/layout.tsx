@@ -1,11 +1,12 @@
+import { Toaster } from "@/components/ui/toaster";
+import { Theme } from "@radix-ui/themes";
+import "@radix-ui/themes/styles.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import 'react-clock/dist/Clock.css';
+import 'react-time-picker/dist/TimePicker.css';
 import StoreProvider from "./StoreProvider";
-import connectMongoDB from "@/lib/DB/MongoConnection";
-import "@radix-ui/themes/styles.css";
-import { Theme } from "@radix-ui/themes";
-import { Toaster } from "@/components/ui/toaster";
+import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

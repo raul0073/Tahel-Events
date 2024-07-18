@@ -16,7 +16,7 @@ import labels from '../../../../../Labels/AddEvent.json'
 function AddEventDrawer() {
   return (
     <Drawer>
-  <DrawerTrigger className='fixed bottom-[8vh] right-5 z-10 bg-primary h-[3rem] w-[3rem] rounded-full hover:scale-105'>
+  <DrawerTrigger className='fixed bottom-[10vh] right-5 z-10 bg-primary h-[3rem] w-[3rem] rounded-full hover:scale-105'>
     <PlusCircledIcon color='white' className="w-full h-full rounded-full"/>
   </DrawerTrigger>
   <DrawerContent>

@@ -71,6 +71,7 @@ function ManagerView({ user }: { user: UserType }) {
 					<EventsCards selectedMonth={selectedMonth} user={user} />
 				</TabsContent>
 			</Tabs>
+				
 			<Separator />
 			<AddEventDrawer />
 		</div>

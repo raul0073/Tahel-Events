@@ -1,13 +1,12 @@
 "use client";
-import { useState } from "react";
-import labels from "../../../../Labels/Entry.json";
 import { zodResolver } from "@hookform/resolvers/zod";
-import  secureLocalStorage  from  "react-secure-storage";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
+import secureLocalStorage from "react-secure-storage";
 import { z } from "zod";
+import labels from "../../../../Labels/Entry.json";
 import { loginUser } from "../../../../Services/login";
 import { loginSchema } from "../../../../ZodSchema/loginSchema";
 import {
@@ -21,12 +20,11 @@ import {
 import { useToast } from "../../ui/use-toast";
 
 import { addEmployeeToStore } from "@/lib/features/employeeSlice";
+import { MdOutlineLockOpen, MdOutlineLogin } from "react-icons/md";
 import { Button } from "../../ui/button";
-import LogoImage from '../Components/LogoImage'
+import LogoImage from '../Components/LogoImage';
 import ForgotPasswordComp from "./ForgotPasswordComp";
 import LoginForm from "./LoginForm";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { MdOutlineLogin, MdOutlineLockOpen } from "react-icons/md";
 function Entry() {
 	// states
 	const [loading, setLoading] = useState<boolean>(false);
@@ -101,7 +99,9 @@ function Entry() {
 							) : (<span>חזרה </span>)}
 						</Button>
 					</CardDescription>
-					
+					<div className="pt-8 flex w-full justify-center items-center">
+						<LogoImage cssClass="w-15 h-15 rounded-full" isDisabled={true} />
+					</div>
 				</CardFooter>
 			</Card>
 			<h3></h3>

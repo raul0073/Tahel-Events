@@ -20,15 +20,17 @@ import { z } from "zod"
 import { addEventService } from "../../../../../Services/addEventService"
 import { addEventSchema } from '../../../../../ZodSchema/addEventSchema'
 import SelectEquipment from "../Equipment/SelectEquipment"
-
+import TimePicker from 'react-time-picker';
 function AddEventForm() {
   const [selected, setSelected] = useState<string[]>([]);
+  const [city, setCity] = useState<string>('');
 
   const dispatch = useDispatch()
     const form = useForm<z.infer<typeof addEventSchema>>({
         resolver: zodResolver(addEventSchema),
         defaultValues: {
-          equipment: selected as [string, ...string[]]
+          equipment: selected as [string, ...string[]],
+          location: city,
         }
       })
 
@@ -141,7 +143,7 @@ function AddEventForm() {
             </FormItem>
           )}
         />
-        {/* <AddressSearch /> */}
+       
      
         <Button type="submit" className="w-full">הוסף</Button>
       </form>
