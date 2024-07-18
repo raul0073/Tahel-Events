@@ -1,13 +1,13 @@
 "use client";
 import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
-import React, { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
 function MonthSlider({
 	setSelectedMonth,
-  selectedMonth
+	selectedMonth,
 }: {
 	setSelectedMonth: Dispatch<SetStateAction<number>>;
-  selectedMonth: number
+	selectedMonth: number;
 }) {
 	const [currentDate, setCurrentDate] = useState<Date>(new Date());
 
@@ -15,14 +15,14 @@ function MonthSlider({
 		setCurrentDate(
 			new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1)
 		);
-    setSelectedMonth(currentDate.getMonth() -1)
+		setSelectedMonth(currentDate.getMonth() - 1);
 	};
 
 	const goToNextMonth = () => {
 		setCurrentDate(
 			new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1)
 		);
-    setSelectedMonth(currentDate.getMonth() + 1)
+		setSelectedMonth(currentDate.getMonth() + 1);
 	};
 
 	const monthNames = [
@@ -43,19 +43,15 @@ function MonthSlider({
 	return (
 		<section className="w-full flex flex-col justify-center items-center">
 			<div className="w-full flex justify-center items-center">
-			<ArrowRightIcon
-			className="mx-1 text-xl font-extrabold cursor-pointer w-10 h-8 text-gray-400 hover:text-gray-300"
-				onClick={goToPreviousMonth}>
-				
-			</ArrowRightIcon>
-			<p className="text-xl font-bold flex flex-col justify-center items-center">
-				{selectedMonth}/{currentDate.getFullYear()} <br />
-			</p>
-			<ArrowLeftIcon
-			className="mx-1 text-xl font-extrabold cursor-pointer w-10 h-8 text-gray-400 hover:text-gray-300"
-				onClick={goToNextMonth}>
-				
-			</ArrowLeftIcon>
+				<ArrowRightIcon
+					className="mx-1 text-xl font-extrabold cursor-pointer w-10 h-8 text-gray-400 hover:text-gray-300"
+					onClick={goToPreviousMonth}></ArrowRightIcon>
+				<p className="text-xl font-bold flex flex-col justify-center items-center">
+					{selectedMonth}/{currentDate.getFullYear()} <br />
+				</p>
+				<ArrowLeftIcon
+					className="mx-1 text-xl font-extrabold cursor-pointer w-10 h-8 text-gray-400 hover:text-gray-300"
+					onClick={goToNextMonth}></ArrowLeftIcon>
 			</div>
 			<small>{monthNames[selectedMonth - 1]}</small>
 		</section>

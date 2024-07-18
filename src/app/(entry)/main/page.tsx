@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import secureLocalStorage from "react-secure-storage";
 
 function Page() {
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
 	const router = useRouter();
 
 	const [thisUser, setThisUser] = useState<UserType>();
@@ -20,13 +20,13 @@ function Page() {
 			router.replace("/");
 			return;
 		}
-		setThisUser(localUser)
+		setThisUser(localUser);
 	}, [router]);
-	
+
 	const user = useSelector((state: RootState) => state.employee.employee);
-	
-	if(!user && thisUser){
-		dispatch(addEmployeeToListStore(thisUser))
+
+	if (!user && thisUser) {
+		dispatch(addEmployeeToListStore(thisUser));
 	}
 
 	if (thisUser?.isManager) {

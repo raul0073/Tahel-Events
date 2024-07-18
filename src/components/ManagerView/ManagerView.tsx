@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Separator } from "../ui/separator";
 
+import { RootState } from "@/lib/store";
 import EventsCards from "../EventsCards";
 import EventsTable from "../root/Events/EventsTable";
 import MonthSlider from "../root/MonthSlider";
@@ -13,33 +14,33 @@ import {
 	getEventsData,
 } from "../root/Utils/functions";
 import AddEventDrawer from "./Components/Events/AddEventDrawer";
-import { RootState } from "@/lib/store";
 
 function ManagerView({ user }: { user: UserType }) {
 	const [selectedMonth, setSelectedMonth] = useState<number>(
 		new Date().getMonth() + 1
 	);
 	const dispatch = useDispatch();
-	const equipmentInStore = useSelector((state: RootState) => state.equipment.equipment)
+	const equipmentInStore = useSelector(
+		(state: RootState) => state.equipment.equipment
+	);
 
-	const eventsInStore = useSelector((state: RootState) => state.events)
+	const eventsInStore = useSelector((state: RootState) => state.events);
 	const hasEvents = Object.keys(eventsInStore).length > 0;
 
-		const employeesInStore = useSelector((state: RootState) => state.employee.employeeList)
-		
+	const employeesInStore = useSelector(
+		(state: RootState) => state.employee.employeeList
+	);
 
 	useEffect(() => {
-		if(!equipmentInStore.length){
+		if (!equipmentInStore.length) {
 			getEqData(dispatch);
 		}
 
 		if (!hasEvents) {
-			console.log("DOES NOT")
 			getEventsData(dispatch);
 		}
-		if(!employeesInStore.length){
+		if (!employeesInStore.length) {
 			getEmployeesData(dispatch);
-
 		}
 	}, [equipmentInStore.length, employeesInStore.length, hasEvents, dispatch]);
 
@@ -71,7 +72,7 @@ function ManagerView({ user }: { user: UserType }) {
 					<EventsCards selectedMonth={selectedMonth} user={user} />
 				</TabsContent>
 			</Tabs>
-				
+
 			<Separator />
 			<AddEventDrawer />
 		</div>

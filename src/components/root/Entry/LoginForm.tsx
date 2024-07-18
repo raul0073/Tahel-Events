@@ -1,10 +1,10 @@
 import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
+	Form,
+	FormControl,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage,
 } from "@/components/ui/form";
 import { Spinner } from "@radix-ui/themes";
 import { SetStateAction } from "react";
@@ -53,17 +53,17 @@ function LoginForm({
 				/>
 				<div className="w-full flex flex-col justify-center items-center space-y-8 pt-10 px-4">
 					{
-							<Button
-								className="w-full"
-								type="submit"
-								// onClick={() => setLoading(true)}
-								disabled={loadingState ? true : false}>
-								<Spinner
-									loading={loadingState ? true : false}
-									size="2"
-									className="mx-1"></Spinner>{" "}
-								{!loadingState && labels.btnSubmit}
-							</Button>
+						<Button
+							className="w-full"
+							type="submit"
+							// onClick={() => setLoading(true)}
+							disabled={loadingState ? true : false}>
+							<Spinner
+								loading={loadingState ? true : false}
+								size="2"
+								className="mx-1"></Spinner>{" "}
+							{!loadingState && labels.btnSubmit}
+						</Button>
 					}
 				</div>
 			</form>

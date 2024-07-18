@@ -1,6 +1,6 @@
 import FooterComp from "@/components/root/Components/FooterComp";
 import Navbar from "@/components/root/Components/Navbar";
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 
 function Layout({ children }: { children: ReactNode }) {
 	return (
@@ -8,9 +8,7 @@ function Layout({ children }: { children: ReactNode }) {
 			<nav className="w-full">
 				<Navbar />
 			</nav>
-			<main className="mx-auto min-h-[80vh] w-[98%] pt-12">
-				{children}
-			</main>
+			<main className="mx-auto min-h-[80vh] w-[98%] pt-12">{children}</main>
 			<footer className="w-full lg:w-2/3 fixed bottom-0">
 				<FooterComp />
 			</footer>

@@ -6,7 +6,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { EventType } from "@/lib/DB/Models/Event";
 import { RootState } from "@/lib/store";
 import { redirect } from "next/navigation";
-import React, { Suspense, useState, useEffect } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 function Page() {
@@ -18,7 +18,11 @@ function Page() {
 		redirect("/main");
 	}
 	const eventsList = useSelector((state: RootState) => state.events);
-	const empEventsList = eventsList[selectedMonth]?.filter((event: EventType) => event.employee === `${emp.first_name} ${emp.last_name}`) || [];
+	const empEventsList =
+		eventsList[selectedMonth]?.filter(
+			(event: EventType) =>
+				event.employee === `${emp.first_name} ${emp.last_name}`
+		) || [];
 
 	useEffect(() => {}, [selectedMonth]);
 

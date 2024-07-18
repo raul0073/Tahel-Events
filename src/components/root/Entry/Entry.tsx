@@ -22,7 +22,7 @@ import { useToast } from "../../ui/use-toast";
 import { addEmployeeToStore } from "@/lib/features/employeeSlice";
 import { MdOutlineLockOpen, MdOutlineLogin } from "react-icons/md";
 import { Button } from "../../ui/button";
-import LogoImage from '../Components/LogoImage';
+import LogoImage from "../Components/LogoImage";
 import ForgotPasswordComp from "./ForgotPasswordComp";
 import LoginForm from "./LoginForm";
 function Entry() {
@@ -61,8 +61,8 @@ function Entry() {
 		});
 
 		router.push("main");
-		dispatch(addEmployeeToStore(res.user))
-		secureLocalStorage.setItem("USER", res.user)
+		dispatch(addEmployeeToStore(res.user));
+		secureLocalStorage.setItem("USER", res.user);
 		setLoading(false);
 	}
 	return (
@@ -71,14 +71,14 @@ function Entry() {
 				<CardHeader className="text-center ">
 					<div className="w-full justify-center items-center flex py-2">
 						{!forgotPass && (
-							<MdOutlineLogin className="w-20 h-20 text-appBege text-center  place-center"/>
+							<MdOutlineLogin className="w-20 h-20 text-appBege text-center  place-center" />
 						)}
-							{forgotPass && (
-							<MdOutlineLockOpen  className="w-20 h-20 text-appBege text-center  place-center"/>
+						{forgotPass && (
+							<MdOutlineLockOpen className="w-20 h-20 text-appBege text-center  place-center" />
 						)}
 					</div>
 					<CardTitle className="text-4xl font-extrabold  text-appLightPurple">
-					{forgotPass && labels.passRetrieve}
+						{forgotPass && labels.passRetrieve}
 						{!forgotPass && labels.header}
 					</CardTitle>
 					<CardDescription>
@@ -93,10 +93,11 @@ function Entry() {
 				)}
 				<CardFooter className="flex flex-col space-y-4">
 					<CardDescription>
-						<Button variant={'link'} className=" text-appLightPurple" onClick={() => setForgotPass(!forgotPass)}>
-							{!forgotPass ? (
-								<span>שכחתי סיסמה</span>
-							) : (<span>חזרה </span>)}
+						<Button
+							variant={"link"}
+							className=" text-appLightPurple"
+							onClick={() => setForgotPass(!forgotPass)}>
+							{!forgotPass ? <span>שכחתי סיסמה</span> : <span>חזרה </span>}
 						</Button>
 					</CardDescription>
 					<div className="pt-8 flex w-full justify-center items-center">

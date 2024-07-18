@@ -1,9 +1,9 @@
 "use client";
-import { Label } from '@/components/ui/label';
-import { Separator } from '@/components/ui/separator';
-import { Switch } from '@/components/ui/switch';
-import { RootState } from '@/lib/store';
-import { useSelector } from 'react-redux';
+import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
+import { Switch } from "@/components/ui/switch";
+import { RootState } from "@/lib/store";
+import { useSelector } from "react-redux";
 
 type AccountDetailsType = {
 	label: string;
@@ -11,7 +11,7 @@ type AccountDetailsType = {
 };
 function Page() {
 	const emp = useSelector((state: RootState) => state.employee.employee);
-  
+
 	const designatedDetails = [
 		{ label: "שם פרטי", data: emp.first_name },
 		{ label: `שם משפחה`, data: emp.last_name },
@@ -45,22 +45,20 @@ function Page() {
 						);
 					})}
 				</div>
-        <Separator className='my-2'/>
+				<Separator className="my-2" />
 				<div className="accountSettings space-y-4">
 					<header>
-          <h3 className="text-lg mb-4 text-appLightPurple">
+						<h3 className="text-lg mb-4 text-appLightPurple">
 							{`העדפות אישיות   `}
 						</h3>
 					</header>
-          <div className="w-full rounded-lg border border-grey p-4 flex justify-between items-center">
-              <div className='text'>
-              <p>{` שלח לי התראות לנייד `}</p>
-              <small className="text-xs">{`התראות נשלחות כשאירוע חדש עולה לאתר`}</small>
-              </div>
-              <Switch
-                aria-readonly
-                    />
-          </div>
+					<div className="w-full rounded-lg border border-grey p-4 flex justify-between items-center">
+						<div className="text">
+							<p>{` שלח לי התראות לנייד `}</p>
+							<small className="text-xs">{`התראות נשלחות כשאירוע חדש עולה לאתר`}</small>
+						</div>
+						<Switch aria-readonly />
+					</div>
 				</div>
 			</div>
 		</section>

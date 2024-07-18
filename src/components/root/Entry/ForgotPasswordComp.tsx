@@ -1,5 +1,5 @@
 'use client'
-import { Dispatch } from "@reduxjs/toolkit";
+import { Fragment } from 'react';
 import labels from "../../../../Labels/Entry.json";
 import { Button } from "../../ui/button";
 import {
@@ -7,14 +7,15 @@ import {
   CardDescription
 } from "../../ui/card";
 import { Input } from "../../ui/input";
-import { Fragment } from 'react';
 function ForgotPasswordComp( ) {
   return (
     <Fragment>
 
-    <CardContent className="space-y-2">
-    <Input type="text" placeholder="כתובת מייל" />
+    <CardContent className="space-y-8">
+	<div>
+	<Input type="text" placeholder="כתובת מייל" />
     <CardDescription>{labels.forgotText}</CardDescription>
+	</div>
     <Button className="w-full" >שלח</Button>
   </CardContent>
 

@@ -14,7 +14,6 @@ import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { UserType } from "@/lib/DB/Models/Employee";
 import { RootState } from "@/lib/store";
-import { TrashIcon } from "@radix-ui/react-icons";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { useSelector } from "react-redux";
 

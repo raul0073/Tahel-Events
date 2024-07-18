@@ -1,12 +1,11 @@
-import React from 'react'
-import AddEquipmentDrawer from './AddEquipmentDrawer'
+import AddEquipmentDrawer from "./AddEquipmentDrawer";
 
 function EquipmentComp() {
-  return (
-    <div>
-      <AddEquipmentDrawer  />
-    </div>
-  )
+	return (
+		<div>
+			<AddEquipmentDrawer />
+		</div>
+	);
 }
 
-export default EquipmentComp
+export default EquipmentComp;

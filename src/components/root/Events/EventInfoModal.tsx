@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { toast } from "@/components/ui/use-toast";
 import { EventType } from "@/lib/DB/Models/Event";
-import { addEventStore, updateEventStore } from "@/lib/features/eventsSlice";
+import { updateEventStore } from "@/lib/features/eventsSlice";
 import { RootState } from "@/lib/store";
 import { Spinner } from "@radix-ui/themes";
 import { useState } from "react";
@@ -22,7 +22,6 @@ import AssignedEventComp from "../../ManagerView/Components/Events/AssignedEvent
 function EventInfoModal({ event }: { event: EventType }) {
 	const dispatch = useDispatch();
 	// flag modal view
-	const [clicked, setClicked] = useState<boolean>(false);
 	const [loading, setLoading] = useState<boolean>(false);
 	// get user
 	const emp = useSelector((state: RootState) => state.employee.employee);

@@ -1,14 +1,14 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { toast } from "@/components/ui/use-toast";
 import { UserType } from "@/lib/DB/Models/Employee";
 import { EventType } from "@/lib/DB/Models/Event";
+import { updateEventStore } from "@/lib/features/eventsSlice";
 import { CheckIcon } from "@radix-ui/react-icons";
 import { Spinner } from "@radix-ui/themes";
-import React, { useState } from "react";
-import { unMarkEventEmployee } from "../../../../../Services/markEvent";
-import { toast } from "@/components/ui/use-toast";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateEventStore } from "@/lib/features/eventsSlice";
+import { unMarkEventEmployee } from "../../../../../Services/markEvent";
 
 function AssignedEventComp({
 	event,
@@ -19,7 +19,7 @@ function AssignedEventComp({
 }) {
 	const empName = `${emp.first_name} ${emp.last_name}`;
 	const [loading, setLoading] = useState<boolean>(false);
-  const dispatch = useDispatch()
+	const dispatch = useDispatch();
 	const handleClick = async () => {
 		try {
 			setLoading(true);
@@ -31,7 +31,7 @@ function AssignedEventComp({
 					variant: "destructive",
 				});
 			} else {
-        dispatch(updateEventStore(res));
+				dispatch(updateEventStore(res));
 				toast({
 					title: `הוסרת מאירוע בהצלחה`,
 				});
