@@ -56,10 +56,6 @@ function Entry() {
 			setLoading(false);
 			return form.reset();
 		}
-		toast({
-			title: `${res.msg}`,
-		});
-
 		router.push("main");
 		dispatch(addEmployeeToStore(res.user));
 		secureLocalStorage.setItem("USER", res.user);

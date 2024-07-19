@@ -60,10 +60,10 @@ function EventsCards({
 		}
 	};
 	return (
-		<section className="card pb-[10vh] space-y-4 md:grid md:grid-cols-2 md:space-y-0 md:gap-2 md:mb-12">
+		<section className="card md:grid md:grid-cols-2 gap-4">
 			{sortedEvents.map((event: EventType) => {
 				return (
-					<Card key={event._id} className="p-1">
+					<Card key={event._id} className="p-1 min-h-fit">
 						<CardHeader className="bg-[#F7EFE5] rounded-t-lg py-4 mb-4">
 							<CardTitle className="text-center">
 								{event.location} <br />
@@ -93,7 +93,8 @@ function EventsCards({
 								</ul>
 							</div>
 						</CardContent>
-						<CardFooter className="p-0">
+						<CardFooter className="w-full flex justify-between items-center p-1">
+							
 							{!event.isAssigned ? (
 								<Button
 									className="w-full"
@@ -111,6 +112,7 @@ function EventsCards({
 									<AssignedEventComp emp={user} event={event} />
 								</>
 							)}
+							
 						</CardFooter>
 					</Card>
 				);

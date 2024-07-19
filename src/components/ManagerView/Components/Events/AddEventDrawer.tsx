@@ -19,11 +19,11 @@ function AddEventDrawer() {
 				<PlusCircledIcon color="white" className="w-full h-full rounded-full" />
 			</DrawerTrigger>
 			<DrawerContent>
-				<DrawerHeader>
-					<DrawerTitle className="text-appLightPurple">
+				<DrawerHeader className="text-center">
+					<DrawerTitle className="text-appLightPurple text-center">
 						{labels.addEventSubTitle}
 					</DrawerTitle>
-					<DrawerDescription>{labels.addEventHeader}</DrawerDescription>
+					<DrawerDescription className="text-center">{labels.addEventHeader}</DrawerDescription>
 				</DrawerHeader>
 				<AddEventForm />
 				<DrawerFooter>

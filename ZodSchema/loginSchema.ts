@@ -9,5 +9,10 @@ const loginSchema = z.object({
         .min(4, { message: "כתובת האימייל אינה תקינה" })
         .email({ message: "כתובת האימייל אינה תקינה" }),
   })
+const forgotPassScehma = z.object({
+    email: z.string()
+        .min(4, { message: "כתובת האימייל אינה תקינה" })
+        .email({ message: "כתובת האימייל אינה תקינה" }),
+  })
 
-  export { loginSchema };
+  export { loginSchema, forgotPassScehma };

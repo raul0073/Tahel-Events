@@ -2,7 +2,6 @@
 const {localhost} = process.env
 
 export const updateEquipmentNameService = async (id: string, newName: string) => {
-    console.log("SERVICE",id, newName)
     try {
         const res = await fetch(`${localhost}/api/equipment/${id}`, {
             method: 'PUT',

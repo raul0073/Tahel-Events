@@ -18,6 +18,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { markEventEmployee } from "../../../../Services/markEvent";
 import AssignedEventComp from "../../ManagerView/Components/Events/AssignedEventComp";
+import { prettyTime } from "../Utils/UI-functions";
 
 function EventInfoModal({ event }: { event: EventType }) {
 	const dispatch = useDispatch();
@@ -58,7 +59,7 @@ function EventInfoModal({ event }: { event: EventType }) {
 				</DialogDescription>
 			</DialogHeader>
 			<Label>שעות האירוע:</Label>
-			<p className="font-semibold">{`${event.start}-${event.end}`}</p>
+			<p className="font-semibold">{prettyTime(event.start)}-{prettyTime(event.end)}</p>
 			<Separator />
 			<Label>מיקום:</Label>
 			<p className="font-semibold">{event.location} </p>

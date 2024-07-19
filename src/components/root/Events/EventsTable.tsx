@@ -26,9 +26,9 @@ function EventsTable({
 	const [showEvent, setShowEvent] = useState<boolean>(false);
 	let events = useSelector((state: RootState) => state.events[selectedMonth]);
 	let emp = useSelector((state: RootState) => state.employee.employee);
-
+	
 	if (!events) {
-		return <h2 className="w-full text-center my-8">אין אירועים להציג</h2>;
+		return (<EventsTableSkeleton />);
 	}
 	customEvents ? (events = customEvents) : (events = events);
 
@@ -87,6 +87,9 @@ function EventsTable({
 			</Suspense>
 		</Fragment>
 	);
+
+
+	
 }
 
 export default EventsTable;

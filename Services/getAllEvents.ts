@@ -6,6 +6,7 @@ export const getAllEventsService = async () => {
     try {
         const res = await fetch(`${localhost}/api/events`, {
           method: 'GET',
+          cache: 'no-store',
           headers: {
             'Content-Type': 'application/json',
           },

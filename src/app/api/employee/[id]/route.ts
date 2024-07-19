@@ -1,5 +1,5 @@
 import Employee from "@/lib/DB/Models/Employee";
-import Event from "@/lib/DB/Models/Event";
+import Event, { EventType } from "@/lib/DB/Models/Event";
 import connectMongoDB from "@/lib/DB/MongoConnection";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -30,7 +30,6 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
     try {
         const { id } = params;
         const data = await req.json();
-        console.log(data)
         await connectMongoDB();
 
         const event = await Event.findById(data._id);
@@ -70,6 +69,41 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
         await event.save();
 
         return NextResponse.json(event, { status: 200 });
+    } catch (error) {
+        return handleError(error);
+    }
+}
+
+
+// Delete employee
+export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+    try {
+        const { id } = params;
+
+        if (!id) {
+            return NextResponse.json({ error: 'מספר מזהה לא תקין' }, { status: 404 });
+        }
+
+        await connectMongoDB();
+
+        // Get the employee by ID
+        const emp = await Employee.findById(id);
+        if (!emp) {
+            return NextResponse.json({ error: 'עובד לא נמצא' }, { status: 404 });
+        }
+
+        // Update all events to remove this employee
+        const events = await Event.updateMany({ employee: `${emp.first_name} ${emp.last_name}` },
+         { $unset: 
+            { employee: 1,
+            isAssigned: false
+            }
+        });
+
+        // Delete the employee
+        await Employee.findByIdAndDelete(id);
+
+        return NextResponse.json(events, { status: 200 });
     } catch (error) {
         return handleError(error);
     }

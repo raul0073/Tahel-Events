@@ -4,7 +4,6 @@ const {localhost} = process.env
 
 export const addEquipmentService = async (data: EquipmentDTO) => {
     try {
-      console.log(localhost)
         const res = await fetch(`${localhost}/api/equipment`, {
           method: 'POST',
           headers: {

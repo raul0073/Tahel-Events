@@ -34,10 +34,14 @@ export const employeeSlice = createSlice({
       if (index !== -1) {
         state.employeeList[index] = action.payload;
       }
-    }
+    },
+    removeEmployeeStore: (state, action: PayloadAction<string>) => {
+      const id  = action.payload;
+      state.employeeList = state.employeeList.filter((emp: UserType) => emp._id !== id)
+    },
   }
 });
 
 // export slice reducer
-export const { addEmployeeToStore, addEmployeeToListStore, updateEmployeeInListStore } = employeeSlice.actions;
+export const { addEmployeeToStore, addEmployeeToListStore, updateEmployeeInListStore, removeEmployeeStore } = employeeSlice.actions;
 export default employeeSlice.reducer;

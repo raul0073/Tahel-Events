@@ -6,7 +6,7 @@ export const getAllEquipmentService = async () => {
     try {
         const res = await fetch(`${localhost}/api/equipment`, {
           method: 'GET',
-          cache: "no-cache",
+          cache: 'no-store',
           headers: {
             'Content-Type': 'application/json',
           },

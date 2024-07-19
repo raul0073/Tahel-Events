@@ -45,10 +45,11 @@ function AssignedEventComp({
 	return (
 		<>
 			<div className="w-full">
-				<div className="w-full flex items-center">
+				<div className="w-full flex items-center justify-start md:justify-start">
 					<CheckIcon color={"green"} height={30} width={30} /> עובד:{" "}
 					{event.employee}
-					<div className="w-full flex justify-end items-center">
+				</div>
+				<div className="w-full flex justify-center items-center relative">
 						{event.employee?.trim() === empName.trim() || emp.isManager ? (
 							<Button
 								className="w-full"
@@ -64,7 +65,6 @@ function AssignedEventComp({
 							</Button>
 						) : null}
 					</div>
-				</div>
 			</div>
 		</>
 	);

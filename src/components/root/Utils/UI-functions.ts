@@ -31,3 +31,23 @@ export function formatDateDifference(date: Date): string {
       return 'Unknown';
     }
   }
+
+
+
+  
+export const prettyHour = (date: Date): string => {
+  let d = new Date(date)
+  const hours = `0${d.getHours()}`.slice(-2);
+  const minutes = `0${d.getMinutes()}`.slice(-2);
+  return `${hours}:${minutes}`;
+};
+
+
+
+
+export const prettyTime = (time: number): string => {
+
+  let t = String(time)
+  t = t.padEnd(5, ":00")
+  return `${t}`
+};

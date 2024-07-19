@@ -8,7 +8,7 @@ function Layout({ children }: { children: ReactNode }) {
 			<nav className="w-full">
 				<Navbar />
 			</nav>
-			<main className="mx-auto min-h-[80vh] w-[98%] pt-12">{children}</main>
+			<main className="mx-auto min-h-[80vh] w-[98%] pt-12 pb-[10vh] md:pb-[10vh] ">{children}</main>
 			<footer className="w-full lg:w-2/3 fixed bottom-0">
 				<FooterComp />
 			</footer>

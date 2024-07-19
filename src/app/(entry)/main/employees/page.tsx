@@ -1,23 +1,14 @@
 "use client";
-import { formatDateDifference } from "@/components/root/Utils/UI-functions";
-import { Button } from "@/components/ui/button";
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardFooter,
-	CardHeader,
-	CardTitle,
-} from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
+
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { UserType } from "@/lib/DB/Models/Employee";
 import { RootState } from "@/lib/store";
-import { FaEdit, FaTrash } from "react-icons/fa";
 import { useSelector } from "react-redux";
+import EmployeeBox from "./Components/EmployeeBox";
 
 function Page() {
+	
 	const allEmployees = useSelector(
 		(state: RootState) => state.employee.employeeList
 	);
@@ -42,41 +33,7 @@ function Page() {
 				{allEmployees.length > 0 ? (
 					allEmployees.map((emp: UserType, index: number) => {
 						return (
-							<Card key={emp._id}>
-								<CardHeader>
-									<CardTitle>
-										{emp.first_name} {emp.last_name}
-									</CardTitle>
-									<CardDescription>{emp.email}</CardDescription>
-									<CardDescription>{emp.phone_number}</CardDescription>
-								</CardHeader>
-								<CardContent>
-									<Label>{`נראה לאחרונה`}</Label>
-									<p>
-										{emp.lastSeen && formatDateDifference(emp.lastSeen)}
-										{" | "}
-										<small>
-											{emp.lastSeen
-												? new Date(emp.lastSeen)
-														.toLocaleTimeString("il")
-														.slice(0, 5)
-												: null}
-										</small>
-									</p>
-								</CardContent>
-								<CardFooter>
-									<div className="actions w-full flex justify-end gap-4 items-center">
-										<Button variant={"secondary"}>
-											<FaEdit className="mx-1" />
-											{"ערוך"}
-										</Button>
-										<Button variant={"destructive"}>
-											<FaTrash className="mx-1" />
-											{"מחק"}
-										</Button>
-									</div>
-								</CardFooter>
-							</Card>
+							<EmployeeBox emp={emp} key={emp._id} />
 						);
 					})
 				) : (
