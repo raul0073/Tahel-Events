@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "@/components/ui/button";
+import AssignEventComp from "@/components/ManagerView/Components/Events/AssignEventComp";
 import {
 	DialogContent,
 	DialogDescription,
@@ -13,7 +13,6 @@ import { toast } from "@/components/ui/use-toast";
 import { EventType } from "@/lib/DB/Models/Event";
 import { updateEventStore } from "@/lib/features/eventsSlice";
 import { RootState } from "@/lib/store";
-import { Spinner } from "@radix-ui/themes";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { markEventEmployee } from "../../../../Services/markEvent";
@@ -27,27 +26,29 @@ function EventInfoModal({ event }: { event: EventType }) {
 	// get user
 	const emp = useSelector((state: RootState) => state.employee.employee);
 	// handle mark event
-	const handleClick = async () => {
+	const handleClick = async (empId?: string) => {
 		try {
-			setLoading(true);
-			const res = await markEventEmployee(event, emp._id);
-			if (res.error) {
-				toast({
-					title: res.error,
-					variant: "destructive",
-				});
-			} else {
-				dispatch(updateEventStore(res));
-				toast({
-					title: `נרשמת לאירוע בהצלחה`,
-				});
-			}
+		  const id: string = empId ? empId : emp._id;
+	  
+		  setLoading(true);
+		   const res = await markEventEmployee(event, id);
+		if (res.error) {
+			toast({
+			  title: res.error,
+			  variant: "destructive",
+			});
+		  } else {
+			dispatch(updateEventStore(res));
+			toast({
+			  title: `נרשמת לאירוע בהצלחה`,
+			});
+		  }
 		} catch (err) {
-			console.log(err);
+		  console.error(err); 
 		} finally {
-			setLoading(false);
+		  setLoading(false);
 		}
-	};
+	  };
 	return (
 		<DialogContent className="">
 			<DialogHeader>
@@ -75,17 +76,9 @@ function EventInfoModal({ event }: { event: EventType }) {
 			<Separator />
 			<DialogFooter className="py-4 w-full flex justify-center items-center">
 				{!event.isAssigned ? (
-					<Button
-						className="w-full"
-						type="submit"
-						onClick={() => handleClick()}
-						disabled={loading ? true : false}>
-						<Spinner
-							loading={loading ? true : false}
-							size="2"
-							className="mx-1"></Spinner>{" "}
-						{`השתבץ לאירוע`}
-					</Button>
+				
+					<AssignEventComp emp={emp} event={event} handleClick={handleClick} loading={loading} />
+	
 				) : (
 					<>
 						<AssignedEventComp emp={emp} event={event} />

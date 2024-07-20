@@ -24,7 +24,6 @@ function AssignedEventComp({
 		try {
 			setLoading(true);
 			const res = await unMarkEventEmployee(event, emp._id);
-			console.log(res);
 			if (res.error) {
 				toast({
 					title: res.error,

@@ -6,6 +6,7 @@ import { Suspense } from "react";
 import { FaUsersCog } from "react-icons/fa";
 import {
 	MdEventAvailable,
+	MdHome,
 	MdManageAccounts,
 	MdOutlineCastle,
 } from "react-icons/md";
@@ -24,13 +25,19 @@ function FooterComp() {
 					(!user.isManager ? (
 						<>
 							<div
-								className="group w-1/2 flex flex-col justify-center items-center cursor-pointer p-2 border-l-2"
+								className="group w-1/3 flex flex-col justify-center items-center cursor-pointer p-2"
 								onClick={() => router.push(`${baseRoute}/events`)}>
 								<MdEventAvailable className="group w-8 h-8 text-gray-700 group-hover:text-primary" />
 								<small>אירועים</small>
 							</div>
 							<div
-								className="group w-1/2 flex flex-col justify-center items-center cursor-pointer p-2"
+								className="group w-1/3 flex flex-col justify-center items-center cursor-pointer p-2 border-x-2"
+								onClick={() => router.push(`${baseRoute}`)}>
+								<MdHome className="group w-8 h-8 text-gray-700 group-hover:text-primary" />
+								<small>בית</small>
+							</div>
+							<div
+								className="group w-1/3 flex flex-col justify-center items-center cursor-pointer p-2"
 								onClick={() => router.push(`${baseRoute}/account`)}>
 								<MdManageAccounts className="group w-8 h-8 text-gray-700 group-hover:text-primary" />
 								<small>חשבון</small>
@@ -39,13 +46,19 @@ function FooterComp() {
 					) : (
 						<>
 							<div
-								className="group w-1/2 flex flex-col justify-center items-center cursor-pointer p-2 border-l-2"
+								className="group w-1/3 flex flex-col justify-center items-center cursor-pointer p-2 "
 								onClick={() => router.push(`${baseRoute}/equipment`)}>
 								<MdOutlineCastle className="group w-8 h-8 text-gray-700 group-hover:text-primary" />
 								<small>ציוד</small>
 							</div>
 							<div
-								className="group w-1/2 flex flex-col justify-center items-center cursor-pointer p-2"
+								className="group w-1/3 flex flex-col justify-center items-center cursor-pointer p-2 border-x-2"
+								onClick={() => router.push(`${baseRoute}`)}>
+								<MdHome className="group w-8 h-8 text-gray-700 group-hover:text-primary" />
+								<small>בית</small>
+							</div>
+							<div
+								className="group w-1/3 flex flex-col justify-center items-center cursor-pointer p-2"
 								onClick={() => router.push(`${baseRoute}/employees`)}>
 								<FaUsersCog className="group w-8 h-8 text-gray-700 group-hover:text-primary" />
 								<small>עובדים</small>

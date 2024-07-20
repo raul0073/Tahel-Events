@@ -57,23 +57,26 @@ function EmployeeBox({ emp }: { emp: UserType }) {
 			</CardHeader>
 
 			<CardContent className="text-sm space-y-4">
+			<div>
+				<Label>{`אימייל`}</Label>
 			<Input
 					onChange={(e) => setEditEmp({ ...emp, email: e.target.value })}
 					defaultValue={emp.email}
                     className="md:w-1/2"
 				/>
+			</div>
+			<div>
+				<Label>{`טלפון`}</Label>
 				<Input
 					onChange={(e) => setEditEmp({ ...emp, phone_number: e.target.value })}
 					defaultValue={emp.phone_number}
                     className="md:w-1/2"
 				/>
-			
+			</div>
 			</CardContent>
-		
 			<CardFooter>
 			<CardDescription className="w-full">
 			<Label className="pt-8">{`נראה לאחרונה`}</Label> <br />
-		
 					{emp.lastSeen && 
 					(
 						<>
@@ -83,7 +86,6 @@ function EmployeeBox({ emp }: { emp: UserType }) {
 						</>
 					)
 					}
-		
 			</CardDescription>
 				<div className="actions w-full flex justify-end gap-4 items-center">
 					{editEmp !== emp && (<Button variant={"secondary"}>
